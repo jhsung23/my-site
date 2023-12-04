@@ -18,7 +18,10 @@ export default function NavLink({
   return (
     <LinkItem
       href={href ?? '/'}
-      className={cn(`text-lg ${isActive ? 'font-semibold hover:text-secondary' : ''}`, className)}
+      className={cn(
+        `text-lg p-1 mx-3 ${isActive ? 'font-bold hover:text-secondary' : ''}`,
+        className,
+      )}
       {...props}
     >
       {children}
