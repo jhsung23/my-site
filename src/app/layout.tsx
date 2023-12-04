@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-import { Header } from '@/components/layouts';
+import { Footer, Header } from '@/components/layouts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -15,10 +15,11 @@ const ThemeProvider = dynamic(() => import('./providers'), { ssr: false });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body className="bg-primary">
+      <body className="flex flex-col items-center bg-primary">
         <ThemeProvider>
           <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
