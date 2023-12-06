@@ -29,53 +29,58 @@ const config: Config = {
           600: '#525252',
           700: '#404040',
           750: '#363636',
-          800: '#272727',
+          800: '#2E2E2E',
+          850: '#272727',
           900: '#242424',
         },
-        navy: {
-          50: '#F2F4F8',
-          100: '#E2E7EE',
-          150: '#D3DBE6',
-          200: '#C4CFDE',
-          300: '#9AACC6',
-          400: '#6284ad',
-          500: '#657086',
-          600: '#1F2937',
-          700: '#192633',
-          800: '#111B24',
-          900: '#080D11',
+        mint: {
+          50: '#F1F3F3',
+          100: '#E9EEED',
+          200: '#DDE6E4',
+          300: '#A1C4C1',
+          400: '#7DB5B4',
+          500: '#57A2A8',
+          600: '#43838E',
+          700: '#315F6D',
+          800: '#1F3E4C',
+          900: '#0F1E28',
+          950: '#070F12',
         },
       },
     },
   },
   darkMode: 'class',
   plugins: [
+    require('@tailwindcss/typography'),
     plugin(({ addComponents, addUtilities }) => {
       addComponents({
         '.text-primary': {
-          '@apply text-navy-800 dark:text-black-100': '',
+          '@apply text-mint-900 dark:text-black-100': '',
         },
         '.text-secondary': {
-          '@apply text-navy-700 dark:text-black-200': '',
+          '@apply text-mint-800 dark:text-black-200': '',
         },
         '.text-tertiary': {
-          '@apply text-navy-500 dark:text-black-400': '',
+          '@apply text-mint-700 dark:text-black-300': '',
         },
         '.text-mute': {
-          '@apply text-navy-300 dark:text-black-500': '',
+          '@apply text-mint-500 dark:text-black-350': '',
         },
         '.bg-primary': {
-          '@apply bg-navy-50 dark:bg-black-900': '',
+          '@apply bg-mint-50 dark:bg-black-850': '',
         },
         '.bg-secondary': {
-          '@apply bg-navy-100 dark:bg-black-800': '',
+          '@apply bg-mint-100 dark:bg-black-800': '',
         },
         '.bg-tertiary': {
-          '@apply bg-navy-150 dark:bg-black-750': '',
+          '@apply bg-mint-200 dark:bg-black-750': '',
         },
         '.bg-mute': {
-          '@apply bg-navy-300 dark:bg-black-500': '',
+          '@apply bg-mint-400 dark:bg-black-500': '',
         },
+        // '.selected-tag': {
+        //   '@apply  text-sky-900': '',
+        // },
       });
     }),
   ],
