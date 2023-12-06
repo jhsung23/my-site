@@ -17,7 +17,9 @@ export default function PostCard({ href, title, subtitle, tags }: Props) {
         <H3>{title}</H3>
         {subtitle && <Paragraph className="mt-2 text-tertiary">{subtitle}</Paragraph>}
         {tags && (
-          <div className="flex flex-wrap mt-2 gap-1.5">{tags?.map((tag) => <Tag>{tag}</Tag>)}</div>
+          <div className="flex flex-wrap mt-2 gap-1.5">
+            {tags?.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          </div>
         )}
       </div>
     </Link>

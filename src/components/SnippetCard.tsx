@@ -1,14 +1,15 @@
 import Link from 'next/link';
 
 import { CodeIcon } from '@/assets/icons';
+import { Tag } from '@/components';
 import { H3 } from '@/components/common';
-import { Tag } from '.';
 
 interface Props {
   href: string;
   title: string;
   tags?: string[];
 }
+
 export default function SnippetCard({ href, title, tags }: Props) {
   return (
     <Link href={href} className="flex basis-96 grow">
@@ -20,7 +21,7 @@ export default function SnippetCard({ href, title, tags }: Props) {
         {tags && (
           <div className="flex gap-2">
             {tags.map((tag) => (
-              <Tag>{tag}</Tag>
+              <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
         )}
