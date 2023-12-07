@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex flex-col items-center bg-primary">
         <ThemeProvider>
           <Header />
-          {children}
+          <main className="w-11/12 max-w-5xl">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
