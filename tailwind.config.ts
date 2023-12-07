@@ -9,6 +9,19 @@ const config: Config = {
       NotoSans: ['NotoSans'],
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: '#57A2A8',
+              fontWeight: '600',
+              '&:hover': {
+                color: '#43838E',
+              },
+            },
+          },
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
@@ -49,6 +62,9 @@ const config: Config = {
       },
     },
   },
+  variants: {
+    typography: ['dark'],
+  },
   darkMode: 'class',
   plugins: [
     require('@tailwindcss/typography'),
@@ -78,9 +94,6 @@ const config: Config = {
         '.bg-mute': {
           '@apply bg-mint-400 dark:bg-black-500': '',
         },
-        // '.selected-tag': {
-        //   '@apply  text-sky-900': '',
-        // },
       });
     }),
   ],
