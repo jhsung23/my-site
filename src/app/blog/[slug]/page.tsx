@@ -1,5 +1,5 @@
 import { getPostBySlug } from '@/apis/postService';
-import { Tag } from '@/components';
+import { ReadingProgressBar, Tag } from '@/components';
 import { H3 as Subtitle, H1 as Title } from '@/components/common';
 import { markdownToHtml, notionPageToMarkdown } from '@/utils/parseContents';
 
@@ -16,6 +16,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      <ReadingProgressBar />
       <div className="mb-3 mt-4 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>

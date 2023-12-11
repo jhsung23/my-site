@@ -71,7 +71,7 @@ const config: Config = {
   darkMode: 'class',
   plugins: [
     require('@tailwindcss/typography'),
-    plugin(({ addComponents, addUtilities }) => {
+    plugin(({ addComponents, addVariant }) => {
       addComponents({
         '.text-primary': {
           '@apply text-mint-900 dark:text-black-100': '',
@@ -98,6 +98,8 @@ const config: Config = {
           '@apply bg-mint-400 dark:bg-black-500': '',
         },
       });
+      addVariant('progress-value', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);
+      addVariant('progress-bg', ['&::-webkit-progress-bar', '&']);
     }),
   ],
 };
