@@ -62,6 +62,9 @@ const config: Config = {
       },
     },
   },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   variants: {
     typography: ['dark'],
   },
