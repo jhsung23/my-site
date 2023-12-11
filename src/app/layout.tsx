@@ -10,17 +10,17 @@ export const metadata: Metadata = {
   description: 'jihyun site',
 };
 
-const ThemeProvider = dynamic(() => import('./providers'), { ssr: false });
+const Providers = dynamic(() => import('./Providers'), { ssr: false });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <body className="flex flex-col items-center bg-primary">
-        <ThemeProvider>
+        <Providers>
           <Header />
           <main className="w-11/12 max-w-5xl">{children}</main>
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
