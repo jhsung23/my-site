@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import { DarkIcon, LightIcon } from '@/assets/icons';
+import { Button } from '@/components/common';
 import { useMode } from '@/hooks';
-import Button from './common/Button';
 
 export default function ThemeToggleButton() {
   const [mounted, setMounted] = useState(false);
@@ -15,10 +15,14 @@ export default function ThemeToggleButton() {
   }, []);
 
   return (
-    <Button onClick={toggleMode} className="w-5 h-5">
+    <Button onClick={toggleMode} className="h-5 w-5">
       {mounted ? (
         isLightMode ? (
-          <LightIcon width={'20px'} height={'20px'} className="fill-navy-600 hover:fill-navy-300" />
+          <LightIcon
+            width={'20px'}
+            height={'20px'}
+            className="fill-[navy-600] hover:fill-[navy-300]"
+          />
         ) : (
           <DarkIcon
             width={'20px'}

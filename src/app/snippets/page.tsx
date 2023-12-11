@@ -14,7 +14,7 @@ export default async function SnippetPage() {
         자주 사용하지만 잊어 버리기 쉬운 코드 조각을 모아두었어요.
       </Paragraph>
 
-      <ul className="flex flex-wrap gap-5 mt-12">
+      <ul className="mt-12 flex flex-wrap gap-5">
         {snippets.map((snippet) => (
           <SnippetListItem
             key={snippet.pageId}

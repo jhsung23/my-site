@@ -1,6 +1,6 @@
 import { GithubIcon, VelogIcon } from '@/assets/icons';
+import { LinkItem } from '@/components/common';
 import { cn } from '@/utils/cn';
-import { LinkItem } from '../common';
 
 export default function Footer({ className, ...props }: React.ComponentProps<'footer'>) {
   return (
@@ -12,7 +12,7 @@ export default function Footer({ className, ...props }: React.ComponentProps<'fo
       {...props}
     >
       {`ⓒ 2023-2024 Sungjihyun`}
-      <div className="flex gap-4 mt-2">
+      <div className="mt-2 flex gap-4">
         <LinkItem href="https://github.com/jhsung23" target="_blank">
           <GithubIcon width={'20px'} height={'20px'} />
         </LinkItem>

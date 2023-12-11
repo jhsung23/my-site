@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
 export default function LinkItem({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ref: _,
   href,
   className,

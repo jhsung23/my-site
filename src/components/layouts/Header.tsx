@@ -3,12 +3,13 @@ import { Logo, NavMenu, OverlayNavMenu } from '@/components/layouts';
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 flex items-center w-11/12 max-w-5xl py-8 md:pt-16 md:pb-8 bg-primary md:-top-8 bg-opacity-95 dark:bg-opacity-95">
-      <nav className="flex justify-between grow">
+    // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+    <header className="bg-primary sticky top-0 z-10 flex w-11/12 max-w-5xl items-center bg-opacity-95 py-8 dark:bg-opacity-95 md:-top-8 md:pb-8 md:pt-16">
+      <nav className="flex grow justify-between">
         <Logo />
-        <NavMenu className="items-center hidden gap-4 list-none select-none md:flex" />
+        <NavMenu className="hidden select-none list-none items-center gap-4 md:flex" />
       </nav>
-      <aside className="flex items-center gap-4 ml-4">
+      <aside className="ml-4 flex items-center gap-4">
         <ThemeToggleButton />
         <MenuToggleButton className="md:hidden" />
       </aside>

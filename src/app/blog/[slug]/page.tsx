@@ -16,21 +16,21 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <div className="flex flex-wrap max-w-full gap-2 mt-4 mb-3">
+      <div className="mb-3 mt-4 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
       </div>
       <Title className="mb-3 break-words">{title}</Title>
-      <Subtitle className="font-normal text-lg mt-3 mb-1">{subtitle}</Subtitle>
+      <Subtitle className="mb-1 mt-3 text-lg font-normal">{subtitle}</Subtitle>
       <time className="text-base font-light">{date}</time>
 
-      <hr className="mt-4 mb-10 bg-mute h-0.5 border-0" />
+      <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />
 
       {/* content */}
       <div className="flex w-full">
         <article
-          className="prose dark:prose-invert min-w-full"
+          className="prose min-w-full dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: content }}
         ></article>
 

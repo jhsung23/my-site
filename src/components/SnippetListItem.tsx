@@ -12,9 +12,9 @@ interface Props {
 
 export default function SnippetListItem({ href, title, tags }: Props) {
   return (
-    <li className="list-none basis-96 grow">
+    <li className="grow basis-96 list-none">
       <Link href={href} className="flex grow">
-        <div className="flex self-stretch justify-between p-5 transition-transform rounded-md bg-secondary hover:-translate-y-2 grow">
+        <div className="bg-secondary flex grow justify-between self-stretch rounded-md p-5 transition-transform hover:-translate-y-2">
           <div className="flex gap-2">
             <CodeIcon width={'28px'} height={'28px'} />
             <H3 className="text-lg font-semibold">{title}</H3>

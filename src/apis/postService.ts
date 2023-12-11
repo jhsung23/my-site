@@ -1,7 +1,5 @@
-import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-
 import { notionClientInstance } from '@/apis/notionClient';
-import { assertPageObjectResponse } from '@/utils/assert';
+import { assertPageObjectResponseArray } from '@/utils/assert';
 
 export const getAllPosts = async () => {
   return notionClientInstance.databases
@@ -16,7 +14,7 @@ export const getAllPosts = async () => {
     })
     .then((response) => {
       const results = response.results;
-      assertPageObjectResponse<PageObjectResponse[]>(results);
+      assertPageObjectResponseArray(results);
       return results.map((result) => {
         return {
           pageId: result.id,
@@ -69,8 +67,9 @@ export const getPostBySlug = async (slug: string) => {
       },
     })
     .then((response) => {
-      const result = response.results[0];
-      assertPageObjectResponse<PageObjectResponse>(result);
+      const results = response.results;
+      assertPageObjectResponseArray(results);
+      const result = results[0];
       return {
         pageId: result.id,
         title:

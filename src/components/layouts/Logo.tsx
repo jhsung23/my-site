@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Logo() {
   return (
     <Link href="/">
-      <img src="/logo.webp" alt="logo" className="w-12 h-12" />
+      <Image src="/logo.webp" width={800} height={800} alt="logo" className="h-12 w-12" />
     </Link>
   );
 }

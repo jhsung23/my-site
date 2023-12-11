@@ -27,7 +27,8 @@ export default function OverlayNavMenu() {
     <>
       {isMenuOpen && (
         <NavMenu
-          className="fixed bottom-0 left-auto right-auto w-11/12 h-full bg-opacity-95 dark:bg-opacity-95 top-28 bg-primary"
+          // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+          className="bg-primary fixed inset-x-auto bottom-0 top-28 h-full w-11/12 bg-opacity-95 dark:bg-opacity-95"
           onClickNavLink={closeMenu}
         />
       )}

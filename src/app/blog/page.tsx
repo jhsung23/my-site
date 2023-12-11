@@ -5,6 +5,7 @@ import { PostListItem, Tag } from '@/components';
 import { H1, H2, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function BlogPage({ searchParams }: { searchParams: { [key: string]: any } }) {
   const posts = await getAllPosts();
   const tags = (await getAllTags()) ?? [];
@@ -22,7 +23,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
 
       <H2 className="mt-12">Tags</H2>
       {/* TODO ul 처리 */}
-      <div className="flex flex-wrap max-w-full gap-2 mt-3">
+      <div className="mt-3 flex max-w-full flex-wrap gap-2">
         <Link href={`?tag=all`} className="group">
           <Tag
             className={`${
@@ -46,13 +47,13 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
         ))}
       </div>
 
-      <H2 className="flex items-baseline justify-between mt-12">
+      <H2 className="mt-12 flex items-baseline justify-between">
         Posts
         <span className="text-lg font-semibold">
           {selectedTag} ({filteredPosts.length})
         </span>
       </H2>
-      <ul className="flex flex-wrap gap-5 mt-3">
+      <ul className="mt-3 flex flex-wrap gap-5">
         {filteredPosts.map((post) => (
           <PostListItem
             key={post.pageId}
