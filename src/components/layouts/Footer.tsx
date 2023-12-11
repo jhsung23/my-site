@@ -11,7 +11,7 @@ export default function Footer({ className, ...props }: React.ComponentProps<'fo
       )}
       {...props}
     >
-      {`ⓒ JihyunSite. All rights reserved.`}
+      {`ⓒ 2023-2024 Sungjihyun`}
       <div className="flex gap-4 mt-2">
         <LinkItem href="https://github.com/jhsung23" target="_blank">
           <GithubIcon width={'20px'} height={'20px'} />
