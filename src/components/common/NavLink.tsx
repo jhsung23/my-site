@@ -2,29 +2,25 @@
 
 import { usePathname } from 'next/navigation';
 
+import { LinkItem } from '@/components/common';
 import { cn } from '@/utils/cn';
-import { LinkItem } from './';
 
-export default function NavLink({
-  ref: _,
-  href,
-  className,
-  children,
-  ...props
-}: React.ComponentProps<'a'>) {
+interface Props extends React.ComponentProps<'li'> {
+  href: string;
+}
+
+export default function NavLink({ href, className, children, ...props }: Props) {
   const pathname = usePathname();
-  const isActive = pathname === href ? true : false;
+  const isActive = pathname === href ? true : false; // FIXME
 
   return (
-    <LinkItem
-      href={href ?? '/'}
-      className={cn(
-        `text-lg p-1 mx-3 ${isActive ? 'font-bold hover:text-secondary' : ''}`,
-        className,
-      )}
+    <li
+      className={cn(`text-lg p-1 ${isActive ? 'font-bold hover:text-secondary' : ''}`, className)}
       {...props}
     >
-      {children}
-    </LinkItem>
+      <LinkItem className="select-none" href={href ?? '/'}>
+        {children}
+      </LinkItem>
+    </li>
   );
 }
