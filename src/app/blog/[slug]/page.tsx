@@ -1,4 +1,4 @@
-import { getPostBySlug } from '@/apis/postService';
+import { getAllPosts, getPostBySlug } from '@/apis/postService';
 import { ReadingProgressBar, Tag } from '@/components';
 import { H3 as Subtitle, H1 as Title } from '@/components/common';
 import { Post } from '@/types/post';
@@ -15,6 +15,14 @@ const getPostDataBySlug = async (slug: string): Promise<PostWithContent> => {
 
   return { ...post, content: htmlContent };
 };
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { title, subtitle, tags, date, content } = await getPostDataBySlug(params.slug);
