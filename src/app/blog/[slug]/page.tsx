@@ -5,7 +5,7 @@ import { Post } from '@/types/post';
 import { markdownToHtml, notionPageToMarkdown } from '@/utils/parseContents';
 
 export interface PostWithContent extends Post {
-  content: Awaited<Promise<ReturnType<typeof markdownToHtml>>>;
+  content: Awaited<ReturnType<typeof markdownToHtml>>;
 }
 
 const getPostDataBySlug = async (slug: string): Promise<PostWithContent> => {
