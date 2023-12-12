@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
+import Loading from '@/app/loading';
 import { Footer, Header } from '@/components/layouts';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -18,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-primary flex flex-col items-center">
         <Providers>
           <Header />
-          <main className="w-11/12 max-w-5xl">{children}</main>
+          <main className="w-11/12 max-w-5xl">
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+          </main>
           <Footer />
         </Providers>
       </body>
