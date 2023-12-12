@@ -22,11 +22,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <>
       <ReadingProgressBar />
-      <div className="mb-3 mt-4 flex max-w-full flex-wrap gap-2">
+      <ul className="mb-3 mt-4 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </div>
+      </ul>
       <Title className="mb-3 break-words">{title}</Title>
       <Subtitle className="mb-1 mt-3 text-lg font-normal">{subtitle}</Subtitle>
       <time className="text-base font-light">{date}</time>

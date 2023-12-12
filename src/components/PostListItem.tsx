@@ -14,9 +14,11 @@ export default function PostListItem({ title, subtitle, slug, tags }: Props) {
           <H3>{title}</H3>
           {subtitle.length > 0 && <Paragraph className="text-tertiary mt-2">{subtitle}</Paragraph>}
           {tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1.5">
-              {tags?.map((tag) => <Tag key={tag}>{tag}</Tag>)}
-            </div>
+            <ul className="mt-2 flex flex-wrap gap-1.5">
+              {tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </ul>
           )}
         </div>
       </Link>

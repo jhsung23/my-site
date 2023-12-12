@@ -21,9 +21,11 @@ export default function ProjectListItem({ cover, projectTitle, description, slug
         <div className="flex flex-col gap-1 p-3">
           <H3 className="font-semibold">{projectTitle}</H3>
           <Paragraph className="text-tertiary">{description}</Paragraph>
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {tags?.map((tag) => <Tag key={tag}>{tag}</Tag>)}
-          </div>
+          <ul className="mt-2 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+          </ul>
         </div>
       </Link>
     </li>

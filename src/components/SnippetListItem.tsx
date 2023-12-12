@@ -16,12 +16,12 @@ export default function SnippetListItem({ title, slug, tags }: Props) {
             <CodeIcon width={'28px'} height={'28px'} />
             <H3 className="text-lg font-semibold">{title}</H3>
           </div>
-          {tags.length && (
-            <div className="flex gap-2">
+          {tags.length > 0 && (
+            <ul className="flex gap-2">
               {tags.map((tag) => (
                 <Tag key={tag}>{tag}</Tag>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       </Link>
