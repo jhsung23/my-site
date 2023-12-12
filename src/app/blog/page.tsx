@@ -9,8 +9,12 @@ const ALL = 'all';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function BlogPage({ searchParams }: { searchParams: { [key: string]: any } }) {
-  const posts = await getAllPosts();
-  const tags = [ALL, ...(await getAllTags())];
+  const [postsPromiseResult, tagsPromiseResult] = await Promise.allSettled([
+    getAllPosts(),
+    getAllTags(),
+  ]);
+  const posts = postsPromiseResult.status === 'fulfilled' ? postsPromiseResult.value : [];
+  const tags = tagsPromiseResult.status === 'fulfilled' ? [ALL, ...tagsPromiseResult.value] : [];
   const selectedTag = searchParams.tag ?? ALL;
   const filteredPosts =
     selectedTag === ALL ? posts : posts.filter((post) => post.tags.includes(selectedTag));
