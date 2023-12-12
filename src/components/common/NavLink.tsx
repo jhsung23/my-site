@@ -11,7 +11,8 @@ interface Props extends React.ComponentProps<'li'> {
 
 export default function NavLink({ href, className, children, ...props }: Props) {
   const pathname = usePathname();
-  const isActive = pathname === href ? true : false; // FIXME
+  const firstPathname = pathname.split('/')[1];
+  const isActive = href === `/${firstPathname}`;
 
   return (
     <li
