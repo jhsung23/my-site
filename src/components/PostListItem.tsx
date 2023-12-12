@@ -2,22 +2,18 @@ import Link from 'next/link';
 
 import { Tag } from '@/components';
 import { H3, Paragraph } from '@/components/common';
+import { Post } from '@/types/post';
 
-interface Props {
-  href: string;
-  title: string;
-  subtitle: string;
-  tags?: string[];
-}
+interface Props extends Post {}
 
-export default function PostListItem({ href, title, subtitle, tags }: Props) {
+export default function PostListItem({ title, subtitle, slug, tags }: Props) {
   return (
-    <li className="flex grow basis-96 list-none">
-      <Link href={href} className="flex grow">
-        <div className="bg-secondary flex grow flex-col self-stretch rounded-md p-5 transition-transform hover:-translate-y-2">
+    <li className="flex grow basis-96 list-none transition-transform hover:-translate-y-1">
+      <Link href={`blog/${slug}`} className="flex grow">
+        <div className="bg-secondary flex grow flex-col self-stretch rounded-md p-5">
           <H3>{title}</H3>
-          {subtitle && <Paragraph className="text-tertiary mt-2">{subtitle}</Paragraph>}
-          {tags && (
+          {subtitle.length && <Paragraph className="text-tertiary mt-2">{subtitle}</Paragraph>}
+          {tags.length && (
             <div className="mt-2 flex flex-wrap gap-1.5">
               {tags?.map((tag) => <Tag key={tag}>{tag}</Tag>)}
             </div>

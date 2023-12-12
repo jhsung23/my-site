@@ -1,7 +1,8 @@
 import { notionClientInstance } from '@/apis/notionClient';
+import { Post } from '@/types/post';
 import { assertPageObjectResponseArray } from '@/utils/assert';
 
-export const getAllPosts = async () => {
+export const getAllPosts = async (): Promise<Post[]> => {
   return notionClientInstance.databases
     .query({
       database_id: `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
@@ -15,7 +16,7 @@ export const getAllPosts = async () => {
     .then((response) => {
       const results = response.results;
       assertPageObjectResponseArray(results);
-      return results.map((result) => {
+      return results.map<Post>((result) => {
         return {
           pageId: result.id,
           title:
@@ -38,24 +39,33 @@ export const getAllPosts = async () => {
             result.properties.tags.type === 'multi_select'
               ? result.properties.tags.multi_select.map((tag) => tag.name)
               : [],
+          date:
+            result.properties.date.type === 'date'
+              ? result.properties.date.date
+                ? result.properties.date.date.start
+                : '날짜없음'
+              : '날짜없음',
         };
       });
     });
 };
 
-export const getAllTags = async () => {
+export const getAllTags = async (): Promise<Post['tags']> => {
   return await notionClientInstance.databases
     .retrieve({
       database_id: `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
     })
     .then((response) => {
       if (response.properties.tags.type === 'multi_select') {
-        return response.properties.tags.multi_select?.options.map((option) => option.name);
+        return response.properties.tags.multi_select
+          ? response.properties.tags.multi_select.options.map((option) => option.name)
+          : [];
       }
+      return [];
     });
 };
 
-export const getPostBySlug = async (slug: string) => {
+export const getPostBySlug = async (slug: string): Promise<Post> => {
   return await notionClientInstance.databases
     .query({
       database_id: `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
@@ -93,7 +103,11 @@ export const getPostBySlug = async (slug: string) => {
             ? result.properties.tags.multi_select.map((tag) => tag.name)
             : [],
         date:
-          result.properties.date.type === 'date' ? result.properties.date.date?.start : '날짜없음',
+          result.properties.date.type === 'date'
+            ? result.properties.date.date
+              ? result.properties.date.date.start
+              : '날짜없음'
+            : '날짜없음',
       };
     });
 };

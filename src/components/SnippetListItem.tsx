@@ -3,23 +3,20 @@ import Link from 'next/link';
 import { CodeIcon } from '@/assets/icons';
 import { Tag } from '@/components';
 import { H3 } from '@/components/common';
+import { Snippet } from '@/types/snippet';
 
-interface Props {
-  href: string;
-  title: string;
-  tags?: string[];
-}
+interface Props extends Snippet {}
 
-export default function SnippetListItem({ href, title, tags }: Props) {
+export default function SnippetListItem({ title, slug, tags }: Props) {
   return (
-    <li className="grow basis-96 list-none">
-      <Link href={href} className="flex grow">
-        <div className="bg-secondary flex grow justify-between self-stretch rounded-md p-5 transition-transform hover:-translate-y-2">
+    <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
+      <Link href={`/snippets/${slug}`}>
+        <div className="bg-secondary flex grow justify-between self-stretch rounded-md p-5">
           <div className="flex gap-2">
             <CodeIcon width={'28px'} height={'28px'} />
             <H3 className="text-lg font-semibold">{title}</H3>
           </div>
-          {tags && (
+          {tags.length && (
             <div className="flex gap-2">
               {tags.map((tag) => (
                 <Tag key={tag}>{tag}</Tag>

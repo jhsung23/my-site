@@ -14,15 +14,9 @@ export default async function SnippetPage() {
         자주 사용하지만 잊어 버리기 쉬운 코드 조각을 모아두었어요.
       </Paragraph>
 
-      <ul className="mt-12 flex flex-wrap gap-5">
+      <ul className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2">
         {snippets.map((snippet) => (
-          <SnippetListItem
-            key={snippet.pageId}
-            // TODO href 변경
-            href="/"
-            title={snippet.title}
-            tags={snippet.tags}
-          />
+          <SnippetListItem key={snippet.pageId} {...snippet} />
         ))}
       </ul>
     </>

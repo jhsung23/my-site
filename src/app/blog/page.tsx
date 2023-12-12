@@ -8,7 +8,7 @@ import { MenuPageIcon } from '@/components/layouts';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function BlogPage({ searchParams }: { searchParams: { [key: string]: any } }) {
   const posts = await getAllPosts();
-  const tags = (await getAllTags()) ?? [];
+  const tags = await getAllTags();
   const selectedTag = searchParams.tag ?? 'all';
   const filteredPosts =
     selectedTag === 'all' ? posts : posts.filter((post) => post.tags.includes(selectedTag));
@@ -53,15 +53,10 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
           {selectedTag} ({filteredPosts.length})
         </span>
       </H2>
-      <ul className="mt-3 flex flex-wrap gap-5">
+
+      <ul className="mt-3 flex flex-wrap gap-3">
         {filteredPosts.map((post) => (
-          <PostListItem
-            key={post.pageId}
-            href={`blog/${post.slug}`}
-            title={post.title}
-            subtitle={post.subtitle}
-            tags={post.tags}
-          />
+          <PostListItem key={post.pageId} {...post} />
         ))}
       </ul>
     </>

@@ -2,7 +2,7 @@ import { notionClientInstance } from '@/apis/notionClient';
 import { Project } from '@/types/project';
 import { assertPageObjectResponseArray } from '@/utils/assert';
 
-export const getAllProjects = async () => {
+export const getAllProjects = async (): Promise<Project[]> => {
   return notionClientInstance.databases
     .query({
       database_id: `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
