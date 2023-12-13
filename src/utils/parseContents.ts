@@ -10,7 +10,7 @@ import { unified } from 'unified';
 
 import { notionClientInstance } from '@/apis/notionClient';
 
-export const notionPageToMarkdown = async (pageId: string) => {
+export const parseNotionPageToMarkdown = async (pageId: string) => {
   const n2m = new NotionToMarkdown({ notionClient: notionClientInstance });
   const mdblocks = await n2m.pageToMarkdown(pageId);
   const mdString = n2m.toMarkdownString(mdblocks);
@@ -18,7 +18,7 @@ export const notionPageToMarkdown = async (pageId: string) => {
   return mdString.parent;
 };
 
-export const markdownToHtml = async (markdown: string) => {
+export const parseMarkdownToHtml = async (markdown: string) => {
   const html = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -32,4 +32,11 @@ export const markdownToHtml = async (markdown: string) => {
     .process(markdown);
 
   return html.value;
+};
+
+export const parseNotionPageToHtml = async (pageId: string) => {
+  const markdownContent = await parseNotionPageToMarkdown(pageId);
+  const htmlContent = await parseMarkdownToHtml(markdownContent);
+
+  return htmlContent;
 };

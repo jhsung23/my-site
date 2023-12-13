@@ -2,18 +2,17 @@ import { getAllPosts, getPostBySlug } from '@/apis/postService';
 import { ReadingProgressBar, Tag } from '@/components';
 import { H3 as Subtitle, H1 as Title } from '@/components/common';
 import { Post } from '@/types/post';
-import { markdownToHtml, notionPageToMarkdown } from '@/utils/parseContents';
+import { parseNotionPageToHtml } from '@/utils/parseContents';
 
 export interface PostWithContent extends Post {
-  content: Awaited<ReturnType<typeof markdownToHtml>>;
+  content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
 }
 
 const getPostDataBySlug = async (slug: string): Promise<PostWithContent> => {
   const post = await getPostBySlug(slug);
-  const markdownContent = await notionPageToMarkdown(post.pageId);
-  const htmlContent = await markdownToHtml(markdownContent);
+  const content = await parseNotionPageToHtml(post.pageId);
 
-  return { ...post, content: htmlContent };
+  return { ...post, content };
 };
 
 export async function generateStaticParams() {
