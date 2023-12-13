@@ -17,6 +17,7 @@ export default function ProjectListItem({ cover, projectTitle, description, slug
           height={200}
           className="h-80 w-full object-cover lg:h-64"
           alt={`${projectTitle} thumbnail`}
+          priority
         />
         <div className="flex flex-col gap-1 p-3">
           <H3 className="font-semibold">{projectTitle}</H3>
