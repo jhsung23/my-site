@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import { getAllProjects, getProjectBySlug } from '@/apis/projectService';
@@ -6,6 +7,11 @@ import { ReadingProgressBar } from '@/components';
 import { H3 as Description, Paragraph, H1 as Title } from '@/components/common';
 import { Project } from '@/types/project';
 import { parseNotionPageToHtml } from '@/utils/parseContents';
+import { getPageCanonical } from '@/utils/seo';
+
+interface Props {
+  params: { slug: string };
+}
 
 export interface ProjectWithContent extends Project {
   content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
@@ -26,7 +32,23 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = await getProjectBySlug(params.slug);
+
+  return {
+    title: project.projectTitle,
+    description: project.description,
+    alternates: {
+      canonical: getPageCanonical('projects', project.slug),
+    },
+    openGraph: {
+      tags: project.tags,
+      type: 'article',
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { cover, projectTitle, description, startDate, endDate, repository, team, content } =
     await getProjectDataBySlug(params.slug);
 

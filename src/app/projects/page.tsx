@@ -1,7 +1,18 @@
+import { Metadata } from 'next';
+
 import { getAllProjects } from '@/apis/projectService';
 import { ProjectListItem } from '@/components';
 import { H1, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
+import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
+
+export const metadata: Metadata = {
+  title: getMenuPageMetaTitle('projects'),
+  description: '지금까지 진행했던 프로젝트예요. 주로 FrontEnd 개발에 참여했어요.',
+  alternates: {
+    canonical: getPageCanonical('projects'),
+  },
+};
 
 export default async function Page() {
   const projects = await getAllProjects();

@@ -4,13 +4,17 @@ import { Suspense } from 'react';
 
 import Loading from '@/app/loading';
 import { Footer, Header } from '@/components/layouts';
+import { SITE } from '@/constants/site';
 
 import './globals.css';
 
 export const metadata: Metadata = {
-  // TODO seo 작업
-  title: 'jihyun site',
-  description: 'jihyun site',
+  openGraph: {
+    siteName: SITE.NAME,
+    images: ['/logo.webp'],
+    locale: 'ko_KR',
+  },
+  authors: [{ name: SITE.AUTHOR, url: SITE.AUTHOR_GITHUB }],
 };
 
 const Providers = dynamic(() => import('./Providers'), { ssr: false });

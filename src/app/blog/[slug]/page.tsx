@@ -1,8 +1,15 @@
+import { Metadata } from 'next';
+
 import { getAllPosts, getPostBySlug } from '@/apis/postService';
 import { ReadingProgressBar, Tag } from '@/components';
 import { H3 as Subtitle, H1 as Title } from '@/components/common';
 import { Post } from '@/types/post';
 import { parseNotionPageToHtml } from '@/utils/parseContents';
+import { getPageCanonical } from '@/utils/seo';
+
+interface Props {
+  params: { slug: string };
+}
 
 export interface PostWithContent extends Post {
   content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
@@ -23,7 +30,23 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
+
+  return {
+    title: post.title,
+    description: post.subtitle,
+    alternates: {
+      canonical: getPageCanonical('blog', post.slug),
+    },
+    openGraph: {
+      tags: post.tags,
+      type: 'article',
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { title, subtitle, tags, date, content } = await getPostDataBySlug(params.slug);
 
   return (
