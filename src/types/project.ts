@@ -5,4 +5,8 @@ export interface Project {
   description: string;
   slug: string;
   tags: string[];
+  startDate: string;
+  endDate: string;
+  repository: string;
+  team: string;
 }
