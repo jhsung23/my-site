@@ -17,6 +17,7 @@ export interface ProjectWithContent extends Project {
   content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
 }
 
+// TODO 함수 추상화
 const getProjectDataBySlug = async (slug: string): Promise<ProjectWithContent> => {
   const project = await getProjectBySlug(slug);
   const content = await parseNotionPageToHtml(project.pageId);
@@ -42,6 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: getPageCanonical('projects', project.slug),
     },
     openGraph: {
+      images: [
+        { url: project.cover, width: 800, height: 600, alt: `${project.projectTitle} thumbnail` },
+      ],
       tags: project.tags,
       type: 'article',
     },
@@ -67,7 +71,7 @@ export default async function Page({ params }: Props) {
             src={cover}
             width={400}
             height={400}
-            alt="thumbnail"
+            alt={`${projectTitle} thumbnail`}
             priority
             className="h-auto w-full rounded-md"
           />

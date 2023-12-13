@@ -11,7 +11,7 @@ import './globals.css';
 export const metadata: Metadata = {
   openGraph: {
     siteName: SITE.NAME,
-    images: ['/logo.webp'],
+    images: [{ url: '/logo.webp', width: 600, height: 600, alt: `logo` }],
     locale: 'ko_KR',
   },
   authors: [{ name: SITE.AUTHOR, url: SITE.AUTHOR_GITHUB }],

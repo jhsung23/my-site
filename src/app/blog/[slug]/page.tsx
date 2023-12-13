@@ -40,6 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: getPageCanonical('blog', post.slug),
     },
     openGraph: {
+      title: post.title,
+      description: post.subtitle,
       tags: post.tags,
       type: 'article',
     },
