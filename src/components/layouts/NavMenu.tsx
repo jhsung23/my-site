@@ -1,5 +1,5 @@
 import { NavLink } from '@/components/common';
-import { menus } from '@/constants/menu';
+import { MENUS, MENU_MAP } from '@/constants/menu';
 import { cn } from '@/utils/cn';
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
 export default function NavMenu({ className, onClickNavLink }: Props) {
   return (
     <ul className={cn('select-none', className)}>
-      {menus.map(({ label, href }) => (
-        <NavLink key={label} href={href} onClick={onClickNavLink}>
-          {label}
+      {MENUS.map((menu) => (
+        <NavLink key={MENU_MAP[menu].label} href={MENU_MAP[menu].href} onClick={onClickNavLink}>
+          {MENU_MAP[menu].label}
         </NavLink>
       ))}
     </ul>

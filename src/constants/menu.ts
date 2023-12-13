@@ -1,6 +1,8 @@
-export const menus = [
-  { href: '/', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/snippets', label: 'Snippets' },
-  { href: '/projects', label: 'Projects' },
-] as const;
+export const MENUS = ['about', 'blog', 'snippets', 'projects'] as const;
+
+export const MENU_MAP: Record<(typeof MENUS)[number], { href: string; label: string }> = {
+  about: { href: '/', label: 'About' },
+  blog: { href: '/blog', label: 'Blog' },
+  snippets: { href: '/snippets', label: 'Snippets' },
+  projects: { href: '/projects', label: 'Projects' },
+};
