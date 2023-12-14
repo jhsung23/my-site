@@ -43,9 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: getPageCanonical('projects', project.slug),
     },
     openGraph: {
-      images: [
-        { url: project.cover, width: 800, height: 600, alt: `${project.projectTitle} thumbnail` },
-      ],
+      images: [{ url: '/logo.png', width: 600, height: 600, alt: `logo` }],
       tags: project.tags,
       type: 'article',
     },
