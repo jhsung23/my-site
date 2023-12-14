@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-primary flex flex-col items-center">
         <Providers>
           <Header />
-          <main className="w-11/12 max-w-5xl">
+          <main className="w-11/12 max-w-3xl">
             <Suspense fallback={<Loading />}>{children}</Suspense>
           </main>
           <Footer />

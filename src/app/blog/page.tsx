@@ -59,7 +59,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
           {selectedTag} ({filteredPosts.length})
         </span>
       </H2>
-      <ul className="mt-3 flex flex-wrap gap-3">
+      <ul className="mt-3 flex flex-col gap-3">
         {filteredPosts.map((post) => (
           <PostListItem key={post.pageId} {...post} />
         ))}

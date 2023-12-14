@@ -63,8 +63,8 @@ export default async function Page({ params }: Props) {
 
       <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />
 
-      <div className="flex flex-col md:flex-row md:gap-8">
-        <section className="md:basis-1/3">
+      <div className="flex w-full flex-col">
+        <section>
           <Image
             src={cover}
             width={400}
@@ -92,10 +92,10 @@ export default async function Page({ params }: Props) {
           </div>
         </section>
 
-        <hr className="my-5 md:hidden" />
+        <hr className="mt-4" />
 
         <article
-          className="prose grow dark:prose-invert md:basis-2/3"
+          className="prose min-w-full dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: content }}
         ></article>
       </div>

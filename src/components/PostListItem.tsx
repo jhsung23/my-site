@@ -8,9 +8,9 @@ interface Props extends Post {}
 
 export default function PostListItem({ title, subtitle, slug, tags }: Props) {
   return (
-    <li className="flex grow basis-96 list-none transition-transform hover:-translate-y-1">
+    <li className="flex list-none transition-transform hover:-translate-y-1">
       <Link href={`blog/${slug}`} className="flex grow">
-        <div className="bg-secondary flex grow flex-col self-stretch rounded-md p-5">
+        <div className="bg-secondary flex grow flex-col self-stretch rounded-md p-4">
           <H3>{title}</H3>
           {subtitle.length > 0 && <Paragraph className="text-tertiary mt-2">{subtitle}</Paragraph>}
           {tags.length > 0 && (
