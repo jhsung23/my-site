@@ -12,12 +12,55 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
+            img: {
+              borderRadius: '0.375rem',
+            },
+            code: {
+              '&:not(pre>code)': {
+                color: '#737373',
+                backgroundColor: '#e5e5e5',
+                borderRadius: '0.375rem',
+                padding: '0.2rem 0.4rem',
+                '&::before': {
+                  content: 'normal',
+                },
+                '&::after': {
+                  content: 'normal',
+                },
+              },
+            },
+            blockquote: {
+              borderLeftColor: '#7DB5B4',
+              backgroundColor: '#ececec',
+              p: {
+                fontStyle: 'normal',
+                '&::before': {
+                  content: 'normal',
+                },
+                '&::after': {
+                  content: 'normal',
+                },
+              },
+            },
             a: {
               color: '#57A2A8',
               fontWeight: '600',
               '&:hover': {
                 color: '#43838E',
               },
+            },
+          },
+        },
+        invert: {
+          css: {
+            code: {
+              '&:not(pre>code)': {
+                backgroundColor: '#404040',
+                color: '#c8c8c8',
+              },
+            },
+            blockquote: {
+              backgroundColor: '#2E2E2E',
             },
           },
         },
@@ -39,7 +82,7 @@ const config: Config = {
           450: '#8a8a8a',
           470: '#808080',
           500: '#737373',
-          600: '#525252',
+          600: '#737373',
           700: '#404040',
           750: '#363636',
           800: '#2E2E2E',
@@ -100,6 +143,7 @@ const config: Config = {
       });
       addVariant('progress-value', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);
       addVariant('progress-bg', ['&::-webkit-progress-bar', '&']);
+      // addVariant()
     }),
   ],
 };
