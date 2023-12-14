@@ -9,6 +9,7 @@ import { SITE } from '@/constants/site';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.URL),
   openGraph: {
     siteName: SITE.NAME,
     images: [{ url: '/logo.png', width: 600, height: 600, alt: `logo` }],
