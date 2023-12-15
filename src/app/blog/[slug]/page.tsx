@@ -62,8 +62,8 @@ export default async function Page({ params }: Props) {
           <Tag key={tag}>{tag}</Tag>
         ))}
       </ul>
-      <Title className="mb-3 break-words">{title}</Title>
-      <Subtitle className="mb-1 mt-3 text-lg font-normal">{subtitle}</Subtitle>
+      <Title className="break-words">{title}</Title>
+      <Subtitle className="my-1 text-base font-normal">{subtitle}</Subtitle>
       <time className="text-base font-light">{date}</time>
 
       <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />

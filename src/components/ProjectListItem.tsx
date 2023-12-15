@@ -20,7 +20,7 @@ export default function ProjectListItem({ cover, projectTitle, description, slug
           priority
         />
         <div className="flex flex-col gap-1 p-3">
-          <H3 className="text-lg font-semibold">{projectTitle}</H3>
+          <H3 className="text-lg">{projectTitle}</H3>
           <Paragraph className="text-tertiary text-sm">{description}</Paragraph>
           <ul className="mt-2 flex flex-wrap gap-1.5">
             {tags.map((tag) => (
