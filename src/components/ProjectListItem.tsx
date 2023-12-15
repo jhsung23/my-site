@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Tag } from '@/components';
@@ -11,13 +10,13 @@ export default function ProjectListItem({ cover, projectTitle, description, slug
   return (
     <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
       <Link href={`/projects/${slug}`}>
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={cover}
           width={200}
           height={200}
-          className="h-64 w-full object-cover"
+          className="h-64 w-full bg-black-150 object-cover dark:bg-black-750"
           alt={`${projectTitle} thumbnail`}
-          priority
         />
         <div className="flex flex-col gap-1 p-3">
           <H3 className="text-lg">{projectTitle}</H3>

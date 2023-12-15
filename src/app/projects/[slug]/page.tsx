@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
 
 import { getAllProjects, getProjectBySlug } from '@/apis/projectService';
 import { CalendarIcon, PersonIcon, RepositoryIcon } from '@/assets/icons';
@@ -67,12 +66,12 @@ export default async function Page({ params }: Props) {
 
       <div className="flex w-full flex-col">
         <section>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={cover}
             width={400}
             height={400}
             alt={`${projectTitle} thumbnail`}
-            priority
             className="h-auto w-full rounded-md"
           />
 
