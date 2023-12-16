@@ -92,7 +92,8 @@ const config: Config = {
         mint: {
           50: '#F1F3F3',
           100: '#E9EEED',
-          200: '#DDE6E4',
+          150: '#E3EAE8',
+          200: '#D2E0DE',
           300: '#A1C4C1',
           400: '#7DB5B4',
           500: '#57A2A8',
@@ -126,7 +127,7 @@ const config: Config = {
           '@apply text-mint-700 dark:text-black-300': '',
         },
         '.text-mute': {
-          '@apply text-mint-500 dark:text-black-350': '',
+          '@apply text-black-450 dark:text-black-350': '',
         },
         '.bg-primary': {
           '@apply bg-mint-50 dark:bg-black-850': '',
@@ -139,6 +140,14 @@ const config: Config = {
         },
         '.bg-mute': {
           '@apply bg-mint-400 dark:bg-black-500': '',
+        },
+        '.tag-primary': {
+          '@apply bg-mint-150 text-mint-400 dark:text-black-350 dark:bg-black-700 hover:bg-mint-200 dark:hover:bg-black-850':
+            '',
+        },
+        '.tag-active': {
+          '@apply cursor-default bg-mint-400 text-white dark:text-white dark:bg-black-500 hover:bg-mint-400 dark:hover:bg-black-500':
+            '',
         },
       });
       addVariant('progress-value', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);

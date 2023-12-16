@@ -41,10 +41,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
       <H2 className="mt-12">Tags</H2>
       <ul className="mt-3 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
-          <Tag
-            key={tag}
-            className={`${selectedTag === tag ? 'bg-mute text-white' : 'hover:bg-secondary'}`}
-          >
+          <Tag key={tag} className={`${selectedTag === tag ? 'tag-active' : ''}`}>
             <Link key={tag} href={`?tag=${tag}`}>
               {tag}
             </Link>
