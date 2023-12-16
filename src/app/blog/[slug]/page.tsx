@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 
 import { getAllPosts, getPostBySlug } from '@/apis/postService';
-import { ReadingProgressBar, Tag } from '@/components';
+import { ReadingProgressBar, TOC, Tag } from '@/components';
 import { H3 as Subtitle, H1 as Title } from '@/components/common';
 import { Post } from '@/types/post';
-import { parseNotionPageToHtml } from '@/utils/parseContents';
+import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
 
 export const revalidate = 3600000;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export interface PostWithContent extends Post {
-  content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
+  content: ParsedHtmlContent;
 }
 
 const getPostDataBySlug = async (slug: string): Promise<PostWithContent> => {
@@ -69,14 +69,16 @@ export default async function Page({ params }: Props) {
       <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />
 
       {/* content */}
-      <div className="flex w-full">
+      <div className="relative">
         <article
           className="prose min-w-full dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: content }}
         ></article>
 
         {/* TOC */}
-        {/* <aside className="hidden lg:block"></aside> */}
+        <aside className="absolute left-full top-0 ml-10 hidden h-full w-56 xl:block">
+          <TOC content={content} />
+        </aside>
       </div>
     </>
   );

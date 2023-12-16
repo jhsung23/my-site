@@ -12,6 +12,9 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
+            'h1,h2,h3,h4,h5,h6': {
+              'scroll-margin-top': '128px',
+            },
             img: {
               borderRadius: '0.375rem',
             },
@@ -152,7 +155,6 @@ const config: Config = {
       });
       addVariant('progress-value', ['&::-webkit-progress-value', '&::-moz-progress-bar', '&']);
       addVariant('progress-bg', ['&::-webkit-progress-bar', '&']);
-      // addVariant()
     }),
   ],
 };
