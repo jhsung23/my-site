@@ -1,5 +1,5 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import _ from 'lodash';
+import compact from 'lodash/compact';
 
 import { getAllPagesOfDatabase, getFilteredPageOfDatabaseWithRichText } from '@/apis/notionClient';
 import { Project } from '@/types/project';
@@ -13,7 +13,7 @@ export const getAllProjects = async () => {
       direction: 'descending',
     },
   );
-  const compactResponse = _.compact(response);
+  const compactResponse = compact(response);
   return compactResponse.map(parseResponseToProject);
 };
 
@@ -22,7 +22,7 @@ export const getProjectBySlug = async (slug: string) => {
     `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
     { property: 'slug', targetString: slug },
   );
-  const compactResponse = _.compact(response);
+  const compactResponse = compact(response);
   return compactResponse.map(parseResponseToProject)[0];
 };
 

@@ -1,5 +1,5 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import _ from 'lodash';
+import compact from 'lodash/compact';
 
 import { getAllPagesOfDatabase } from '@/apis/notionClient';
 import { Snippet } from '@/types/snippet';
@@ -9,7 +9,7 @@ export const getAllSnippets = async () => {
   const response = await getAllPagesOfDatabase(
     `${process.env.NEXT_PUBLIC_NOTION_SNIPPET_DATABASE_ID}`,
   );
-  const compactResponse = _.compact(response);
+  const compactResponse = compact(response);
   return compactResponse.map(parseResponseToSnippet);
 };
 
