@@ -5,7 +5,7 @@ import { CalendarIcon, PersonIcon, RepositoryIcon } from '@/assets/icons';
 import { ReadingProgressBar } from '@/components';
 import { H3 as Description, Paragraph, H1 as Title } from '@/components/common';
 import { Project } from '@/types/project';
-import { parseNotionPageToHtml } from '@/utils/parseContents';
+import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
 
 export const revalidate = 3600000;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export interface ProjectWithContent extends Project {
-  content: Awaited<ReturnType<typeof parseNotionPageToHtml>>;
+  content: ParsedHtmlContent;
 }
 
 // TODO 함수 추상화
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const { cover, projectTitle, description, startDate, endDate, repository, team, content } =
+  const { thumbnail, projectTitle, description, startDate, endDate, repository, team, content } =
     await getProjectDataBySlug(params.slug);
 
   return (
@@ -68,7 +68,7 @@ export default async function Page({ params }: Props) {
         <section>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={cover}
+            src={thumbnail}
             width={400}
             height={400}
             alt={`${projectTitle} thumbnail`}

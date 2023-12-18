@@ -6,13 +6,19 @@ import { Project } from '@/types/project';
 
 interface Props extends Project {}
 
-export default function ProjectListItem({ cover, projectTitle, description, slug, tags }: Props) {
+export default function ProjectListItem({
+  thumbnail,
+  projectTitle,
+  description,
+  slug,
+  tags,
+}: Props) {
   return (
     <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
       <Link href={`/projects/${slug}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={cover}
+          src={thumbnail}
           width={200}
           height={200}
           className="h-64 w-full bg-black-150 object-cover dark:bg-black-750"
