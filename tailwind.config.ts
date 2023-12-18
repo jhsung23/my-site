@@ -43,6 +43,7 @@ const config: Config = {
                 '&::after': {
                   content: 'normal',
                 },
+                padding: '1em 1em 1em 0',
               },
             },
             a: {
