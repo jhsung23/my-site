@@ -1,12 +1,30 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AssertionError } from 'assert';
 
-import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import {
+  DatabaseObjectResponse,
+  PageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function assertPageObjectResponseArray(val: any): asserts val is PageObjectResponse[] {
   if (val === null || val[0].properties === undefined) {
     throw new AssertionError({
       message: `Expected 'val' to be PageObjectResponse[], but received ${val}`,
     });
   }
+}
+
+export function assertDatabaseObjectResponse(val: any): asserts val is DatabaseObjectResponse {
+  if (
+    val.object === 'database' &&
+    'title' in val &&
+    'description' in val &&
+    'icon' in val &&
+    'cover' in val
+  ) {
+    return;
+  }
+  throw new AssertionError({
+    message: `Expected 'val' to be DatabaseObjectResponse, but received ${val}`,
+  });
 }
