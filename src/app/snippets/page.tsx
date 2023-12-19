@@ -6,6 +6,8 @@ import { H1, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
+export const revalidate = 600000;
+
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('snippets'),
   description: '자주 사용하지만 잊어 버리기 쉬운 코드 조각을 모아두었어요.',
