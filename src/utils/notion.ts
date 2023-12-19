@@ -30,7 +30,7 @@ export const extractTitleProperty = (titlePropertyObject: PagePropertyObject): s
   if (titlePropertyObject.type === 'title') {
     return titlePropertyObject.title[0].plain_text;
   }
-  return 'no title';
+  return '';
 };
 
 export const extractMultiSelectProperty = (
@@ -48,7 +48,7 @@ export const extractRichTextProperty = (richTextPropertyObject: PagePropertyObje
       return richTextPropertyObject.rich_text[0].plain_text;
     }
   }
-  return 'no text';
+  return '';
 };
 
 export const extractDateProperty = (
@@ -56,18 +56,18 @@ export const extractDateProperty = (
 ): { startDate: string; endDate: string } => {
   if (datePropertyObject.type === 'date') {
     return {
-      startDate: datePropertyObject.date?.start ?? 'no date',
-      endDate: datePropertyObject.date?.end ?? 'no date',
+      startDate: datePropertyObject.date?.start ?? '',
+      endDate: datePropertyObject.date?.end ?? '',
     };
   }
-  return { startDate: 'no date', endDate: 'no date' };
+  return { startDate: '', endDate: '' };
 };
 
 export const extractUrlProperty = (urlPropertyObject: PagePropertyObject) => {
   if (urlPropertyObject.type === 'url') {
     return urlPropertyObject.url ?? '';
   }
-  return 'no url';
+  return '';
 };
 
 export const extractFilesProperty = (filePropertyObject: PagePropertyObject) => {
@@ -79,5 +79,5 @@ export const extractFilesProperty = (filePropertyObject: PagePropertyObject) => 
       return filePropertyObject.files[0].external.url;
     }
   }
-  return 'no files';
+  return '';
 };
