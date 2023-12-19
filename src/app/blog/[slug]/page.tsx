@@ -62,7 +62,7 @@ export default async function Page({ params }: Props) {
           <Tag key={tag}>{tag}</Tag>
         ))}
       </ul>
-      <Title className="break-words">{title}</Title>
+      <Title className="text-highlight break-words font-bold">{title}</Title>
       <Subtitle className="my-1 text-base font-normal">{subtitle}</Subtitle>
       <time className="text-base font-light">{date}</time>
 

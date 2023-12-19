@@ -59,7 +59,7 @@ export default async function Page({ params }: Props) {
     <>
       <ReadingProgressBar />
 
-      <Title className="mb-3 break-words">{projectTitle}</Title>
+      <Title className="text-highlight mb-3 break-words font-bold">{projectTitle}</Title>
       <Description className="mb-1 mt-3 text-lg font-normal">{description}</Description>
 
       <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />

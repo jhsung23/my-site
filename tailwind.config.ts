@@ -121,6 +121,9 @@ const config: Config = {
     require('@tailwindcss/typography'),
     plugin(({ addComponents, addVariant }) => {
       addComponents({
+        '.text-highlight': {
+          '@apply text-emerald-600 dark:text-emerald-500': '',
+        },
         '.text-primary': {
           '@apply text-mint-900 dark:text-black-100': '',
         },
@@ -131,7 +134,7 @@ const config: Config = {
           '@apply text-mint-700 dark:text-black-300': '',
         },
         '.text-mute': {
-          '@apply text-black-450 dark:text-black-350': '',
+          '@apply text-black-500 dark:text-black-350': '',
         },
         '.bg-primary': {
           '@apply bg-mint-50 dark:bg-black-850': '',
