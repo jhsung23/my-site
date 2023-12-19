@@ -6,7 +6,7 @@ import { H1, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
-export const revalidate = 600000;
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('projects'),

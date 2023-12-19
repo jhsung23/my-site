@@ -9,7 +9,7 @@ import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 const ALL = 'all';
 
-export const revalidate = 600000;
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('blog'),

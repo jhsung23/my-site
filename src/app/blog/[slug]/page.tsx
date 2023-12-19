@@ -7,7 +7,7 @@ import { Post } from '@/types/post';
 import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
 
-export const revalidate = 3600000;
+export const revalidate = 1800;
 
 interface Props {
   params: { slug: string };
