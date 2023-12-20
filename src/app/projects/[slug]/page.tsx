@@ -90,7 +90,7 @@ export default async function Page({ params }: Props) {
                 href={repository}
                 target="_blank"
                 className="hover:text-mute"
-                aria-label={`${projectTitle}의 깃허브 레포지토리 방문`}
+                aria-label={`Github repository 바로가기`}
               >
                 Github repository 바로가기
               </a>

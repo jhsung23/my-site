@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Tag } from '@/components';
-import { H3, Paragraph } from '@/components/common';
+import { H2, Paragraph } from '@/components/common';
 import { Project } from '@/types/project';
 
 interface Props extends Project {}
@@ -15,7 +15,7 @@ export default function ProjectListItem({
 }: Props) {
   return (
     <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
-      <Link href={`/projects/${slug}`} aria-label={`${projectTitle} 프로젝트 설명 상세 보기`}>
+      <Link href={`/projects/${slug}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnail}
@@ -25,13 +25,19 @@ export default function ProjectListItem({
           alt={`${projectTitle} thumbnail`}
         />
         <div className="flex flex-col gap-1 p-3">
-          <H3 className="text-lg">{projectTitle}</H3>
-          <Paragraph className="text-tertiary text-sm">{description}</Paragraph>
-          <ul className="mt-2 flex flex-wrap gap-1.5">
-            {tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </ul>
+          <H2 className="text-lg">{projectTitle}</H2>
+          <Paragraph className="text-tertiary text-sm" aria-hidden="true">
+            {description}
+          </Paragraph>
+          {tags.length > 0 && (
+            <ul className="mt-2 flex flex-wrap gap-1.5">
+              {tags.map((tag) => (
+                <Tag key={tag} aria-hidden="true">
+                  {tag}
+                </Tag>
+              ))}
+            </ul>
+          )}
         </div>
       </Link>
     </li>

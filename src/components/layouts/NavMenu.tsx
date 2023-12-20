@@ -15,7 +15,7 @@ export default function NavMenu({ className, onClickNavLink }: Props) {
           key={MENU_MAP[menu].label}
           href={MENU_MAP[menu].href}
           onClick={onClickNavLink}
-          aria-label={`${MENU_MAP[menu].label} 메뉴로 이동`}
+          aria-label={`${MENU_MAP[menu].label} 메뉴`}
         >
           {MENU_MAP[menu].label}
         </NavLink>

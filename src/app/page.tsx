@@ -60,7 +60,7 @@ export default async function AboutPage() {
               href="mailto:jhsung23@naver.com"
               target="_blank"
               className="text-mute hover:text-highlight"
-              aria-label="Email 전송 페이지로 이동"
+              aria-label="Email 전송"
             >
               Email
             </a>
@@ -68,15 +68,11 @@ export default async function AboutPage() {
               href="https://github.com/jhsung23"
               target="_blank"
               className="text-mute hover:text-highlight"
-              aria-label="Github 사이트로 이동"
+              aria-label="Github"
             >
               Github
             </a>
-            <Link
-              href="blog"
-              className="text-mute hover:text-highlight"
-              aria-label="Blog 페이지로 이동"
-            >
+            <Link href="blog" className="text-mute hover:text-highlight" aria-label="Blog">
               Blog
             </Link>
           </div>

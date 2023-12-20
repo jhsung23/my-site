@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { CodeIcon } from '@/assets/icons';
 import { Tag } from '@/components';
-import { H3 } from '@/components/common';
+import { H2 } from '@/components/common';
 import { Snippet } from '@/types/snippet';
 
 interface Props extends Snippet {}
@@ -10,16 +10,18 @@ interface Props extends Snippet {}
 export default function SnippetListItem({ title, slug, tags }: Props) {
   return (
     <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
-      <Link href={`/snippets/${slug}`} aria-label={`${title} 스니펫 상세 보기`}>
+      <Link href={`/snippets/${slug}`} aria-label={`${title}`}>
         <div className="bg-secondary flex grow justify-between self-stretch rounded-md p-4">
           <div className="flex gap-2">
             <CodeIcon width={'28px'} height={'28px'} />
-            <H3 className="text-base">{title}</H3>
+            <H2 className="text-base">{title}</H2>
           </div>
           {tags.length > 0 && (
-            <ul className="flex gap-2">
+            <ul className="flex gap-2" aria-hidden="true">
               {tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
+                <Tag key={tag} aria-hidden="true">
+                  {tag}
+                </Tag>
               ))}
             </ul>
           )}

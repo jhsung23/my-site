@@ -12,18 +12,10 @@ export default function Footer({ className, ...props }: React.ComponentProps<'fo
     >
       {`ⓒ 2023-2024 Sungjihyun`}
       <div className="mt-2 flex gap-4">
-        <a
-          href="https://github.com/jhsung23"
-          target="_blank"
-          aria-label="사이트 개발자의 깃허브 방문"
-        >
+        <a href="https://github.com/jhsung23" target="_blank" aria-label="Github">
           <GithubIcon width={'20px'} height={'20px'} />
         </a>
-        <a
-          href="https://velog.io/@jhsung23"
-          target="_blank"
-          aria-label="사이트 개발자의 벨로그 방문"
-        >
+        <a href="https://velog.io/@jhsung23" target="_blank" aria-label="Velog">
           <VelogIcon width={'20px'} height={'20px'} />
         </a>
       </div>

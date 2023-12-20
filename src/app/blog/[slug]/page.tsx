@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import { getAllPosts, getPostBySlug } from '@/apis/postService';
 import { ReadingProgressBar, TOC, Tag } from '@/components';
-import { H3 as Subtitle, H1 as Title } from '@/components/common';
+import { H1, Paragraph } from '@/components/common';
 import { Post } from '@/types/post';
 import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
@@ -62,9 +62,9 @@ export default async function Page({ params }: Props) {
           <Tag key={tag}>{tag}</Tag>
         ))}
       </ul>
-      <Title className="text-highlight break-words font-bold">{title}</Title>
-      <Subtitle className="my-1 text-base font-normal">{subtitle}</Subtitle>
-      <time className="text-base font-light">{date}</time>
+      <H1 className="text-highlight break-words font-bold">{title}</H1>
+      <Paragraph className="my-1 font-normal">{subtitle}</Paragraph>
+      <time className="text-sm font-light">{date}</time>
 
       <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />
 
