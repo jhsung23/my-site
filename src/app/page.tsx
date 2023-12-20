@@ -31,6 +31,7 @@ export default async function AboutPage() {
           alt="avatar"
           width={196}
           height={196}
+          priority
           className="rounded-full bg-emerald-800"
         />
         <div className="flex flex-col gap-2">
@@ -59,7 +60,7 @@ export default async function AboutPage() {
               href="mailto:jhsung23@naver.com"
               target="_blank"
               className="text-mute hover:text-highlight"
-              aria-label="사이트 개발자에게 메일 전송"
+              aria-label="Email 전송 페이지로 이동"
             >
               Email
             </a>
@@ -67,14 +68,14 @@ export default async function AboutPage() {
               href="https://github.com/jhsung23"
               target="_blank"
               className="text-mute hover:text-highlight"
-              aria-label="사이트 개발자의 깃허브 방문"
+              aria-label="Github 사이트로 이동"
             >
               Github
             </a>
             <Link
               href="blog"
               className="text-mute hover:text-highlight"
-              aria-label="사이트 개발자의 블로그 방문"
+              aria-label="Blog 페이지로 이동"
             >
               Blog
             </Link>
@@ -84,7 +85,12 @@ export default async function AboutPage() {
 
       <H2 className="mt-20 flex items-baseline justify-between">
         Recent Posts
-        <Link href="blog" className="text-mute text-sm" aria-label="작성된 글 목록 더보기">
+        <Link
+          href="blog"
+          className="text-mute text-sm"
+          aria-label="더 보기"
+          aria-description="블로그에 작성된 글 목록 더 보기"
+        >
           더 보기
         </Link>
       </H2>
