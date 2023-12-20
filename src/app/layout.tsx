@@ -22,7 +22,7 @@ const Providers = dynamic(() => import('./Providers'), { ssr: false });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
+    <html lang="ko">
       <body className="bg-primary flex flex-col items-center">
         <Providers>
           <Header />

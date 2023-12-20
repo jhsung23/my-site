@@ -20,7 +20,11 @@ export default function MenuToggleButton({ className }: Props) {
   };
 
   return (
-    <Button className={cn('w-6 h-6 ', className)} onClick={toggleMenu}>
+    <Button
+      className={cn('w-6 h-6 ', className)}
+      onClick={toggleMenu}
+      aria-label={isMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+    >
       {isMenuOpen ? (
         <CloseIcon width={'24px'} height={'24px'} />
       ) : (

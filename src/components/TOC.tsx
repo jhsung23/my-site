@@ -49,7 +49,9 @@ export default function TOC({ content }: Props) {
       <ol className="flex flex-col gap-1.5">
         {headingData.map(({ headingTagName, textContent, href }) => (
           <li key={textContent} className={`text-mute text-sm ${PADDING_LEFT[headingTagName]}`}>
-            <a href={href}>{textContent}</a>
+            <a href={href} aria-label={`${textContent} 제목으로 이동`}>
+              {textContent}
+            </a>
           </li>
         ))}
       </ol>

@@ -44,7 +44,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
       <ul className="mt-3 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
           <Tag key={tag} className={`${selectedTag === tag ? 'tag-active' : ''}`}>
-            <Link key={tag} href={`?tag=${tag}`}>
+            <Link key={tag} href={`?tag=${tag}`} aria-label={`${tag} 관련 글 목록 더 보기`}>
               {tag}
             </Link>
           </Tag>

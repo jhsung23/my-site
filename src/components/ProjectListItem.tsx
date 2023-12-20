@@ -15,7 +15,7 @@ export default function ProjectListItem({
 }: Props) {
   return (
     <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
-      <Link href={`/projects/${slug}`}>
+      <Link href={`/projects/${slug}`} aria-label={`${projectTitle} 프로젝트 설명 상세 보기`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnail}

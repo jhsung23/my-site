@@ -15,7 +15,11 @@ export default function ThemeToggleButton() {
   }, []);
 
   return (
-    <Button onClick={toggleMode} className="h-5 w-5">
+    <Button
+      onClick={toggleMode}
+      className="h-5 w-5"
+      aria-label={isLightMode ? '다크모드로 변경' : '라이트모드로 변경'}
+    >
       {mounted ? (
         isLightMode ? (
           <LightIcon

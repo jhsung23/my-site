@@ -1,5 +1,4 @@
 import { GithubIcon, VelogIcon } from '@/assets/icons';
-import { LinkItem } from '@/components/common';
 import { cn } from '@/utils/cn';
 
 export default function Footer({ className, ...props }: React.ComponentProps<'footer'>) {
@@ -13,12 +12,20 @@ export default function Footer({ className, ...props }: React.ComponentProps<'fo
     >
       {`ⓒ 2023-2024 Sungjihyun`}
       <div className="mt-2 flex gap-4">
-        <LinkItem href="https://github.com/jhsung23" target="_blank">
+        <a
+          href="https://github.com/jhsung23"
+          target="_blank"
+          aria-label="사이트 개발자의 깃허브 방문"
+        >
           <GithubIcon width={'20px'} height={'20px'} />
-        </LinkItem>
-        <LinkItem href="https://velog.io/@jhsung23" target="_blank">
+        </a>
+        <a
+          href="https://velog.io/@jhsung23"
+          target="_blank"
+          aria-label="사이트 개발자의 벨로그 방문"
+        >
           <VelogIcon width={'20px'} height={'20px'} />
-        </LinkItem>
+        </a>
       </div>
     </footer>
   );

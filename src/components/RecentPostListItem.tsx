@@ -9,7 +9,7 @@ interface Props extends Post {}
 export default function RecentPostListItem({ title, slug, tags }: Props) {
   return (
     <li>
-      <Link href={`blog/${slug}`}>
+      <Link href={`blog/${slug}`} aria-label={`${title} 글 상세 보기`}>
         <div className="bg-secondary flex h-full flex-col justify-between rounded-md p-4">
           <H3 className="text-lg">{title}</H3>
           {tags.length > 0 && (
