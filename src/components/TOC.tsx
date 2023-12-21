@@ -2,7 +2,8 @@
 
 import { parse } from 'node-html-parser';
 
-import { H3 } from '@/components/common';
+import { Paragraph } from '@/components/common';
+import { useToc } from '@/hooks';
 import { ParsedHtmlContent, findHeadingTag } from '@/utils/contents';
 
 interface Props {
@@ -14,6 +15,7 @@ interface TOCHeadingData {
   href: string;
 }
 
+const MIN_HEADING = 2;
 const MAX_HEADING = 3;
 const PADDING_LEFT = Object.freeze({
   h1: 'pl-0',
@@ -41,15 +43,26 @@ const filterHeadingsUpTo = (maxHeadingNumber: number, headingData: TOCHeadingDat
 };
 
 export default function TOC({ content }: Props) {
-  const headingData: TOCHeadingData[] = filterHeadingsUpTo(MAX_HEADING, parseHeadingData(content));
+  const tocHeadingData: TOCHeadingData[] = filterHeadingsUpTo(
+    MAX_HEADING,
+    parseHeadingData(content),
+  );
+  const [activeTitle, setActiveTitle] = useToc(MIN_HEADING, MAX_HEADING);
 
   return (
     <nav className="sticky top-32 flex flex-col gap-4 border-l-2 border-black-200 px-3 py-1 dark:border-black-700">
-      <H3 className="text-mute text-base font-medium">Table of Contents</H3>
+      <Paragraph className="text-mute text-base font-medium">Table of Contents</Paragraph>
       <ol className="flex flex-col gap-1.5">
-        {headingData.map(({ headingTagName, textContent, href }) => (
-          <li key={textContent} className={`text-mute text-sm ${PADDING_LEFT[headingTagName]}`}>
-            <a href={href} aria-label={`${textContent} 제목으로 이동`}>
+        {tocHeadingData.map(({ headingTagName, textContent, href }) => (
+          <li
+            key={textContent}
+            className={`text-sm ${PADDING_LEFT[headingTagName]} ${
+              activeTitle === href.slice(1)
+                ? 'text-highlight scale-105 font-semibold duration-300 ease-out'
+                : 'text-mute scale-100 duration-300 ease-out'
+            }`}
+          >
+            <a href={href} aria-label={textContent} onClick={() => setActiveTitle(href.slice(1))}>
               {textContent}
             </a>
           </li>
