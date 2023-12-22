@@ -122,7 +122,7 @@ const config: Config = {
     plugin(({ addComponents, addVariant }) => {
       addComponents({
         '.text-highlight': {
-          '@apply text-emerald-600 dark:text-emerald-500': '',
+          '@apply text-emerald-700 dark:text-emerald-500': '',
         },
         '.text-primary': {
           '@apply text-black-700 dark:text-black-100': '',
