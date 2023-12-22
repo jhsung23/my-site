@@ -14,17 +14,17 @@ export default function ProjectListItem({
   tags,
 }: Props) {
   return (
-    <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
+    <li className="list-none overflow-hidden transition-transform hover:-translate-y-1">
       <Link href={`/projects/${slug}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnail}
           width={200}
           height={200}
-          className="h-64 w-full bg-black-150 object-cover dark:bg-black-750"
+          className="h-64 w-full rounded-lg bg-black-150 object-cover dark:bg-black-750"
           alt={`${projectTitle} thumbnail`}
         />
-        <div className="flex flex-col gap-1 p-3">
+        <div className="flex flex-col gap-1 pt-2">
           <H2 className="text-lg">{projectTitle}</H2>
           <Paragraph className="text-tertiary text-sm" aria-hidden="true">
             {description}

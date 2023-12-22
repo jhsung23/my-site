@@ -10,7 +10,7 @@ export default function PostListItem({ title, subtitle, slug, tags }: Props) {
   return (
     <li className="flex list-none transition-transform hover:-translate-y-1">
       <Link href={`blog/${slug}`} className="flex grow" aria-label={`${title}`}>
-        <div className="bg-secondary flex grow flex-col self-stretch rounded-md p-4">
+        <div className="bg-primary flex grow flex-col self-stretch rounded-md">
           <H3>{title}</H3>
           {subtitle.length > 0 && (
             <Paragraph className="text-tertiary mt-1" aria-hidden="true">

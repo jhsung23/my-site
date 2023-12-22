@@ -13,7 +13,7 @@ export default function LinkItem({
   return (
     <Link
       href={href ?? '/'}
-      className={cn('flex items-center text-secondary hover:text-tertiary', className)}
+      className={cn('flex items-center text-secondary hover:text-mute', className)}
       {...props}
     >
       {children}

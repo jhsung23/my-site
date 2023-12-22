@@ -10,7 +10,7 @@ export default function RecentPostListItem({ title, slug, tags }: Props) {
   return (
     <li>
       <Link href={`blog/${slug}`} aria-label={title}>
-        <div className="bg-secondary flex h-full flex-col justify-between rounded-md p-4">
+        <div className="flex h-full flex-col justify-between rounded-md">
           <H3 className="text-lg">{title}</H3>
           {tags.length > 0 && (
             <ul className="mt-2 flex flex-wrap gap-1.5" aria-hidden="true">

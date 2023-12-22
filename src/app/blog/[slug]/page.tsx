@@ -66,7 +66,7 @@ export default async function Page({ params }: Props) {
       <Paragraph className="my-1 font-normal">{subtitle}</Paragraph>
       <time className="text-sm font-light">{date}</time>
 
-      <hr className="bg-mute mb-10 mt-4 h-0.5 border-0" />
+      <hr className="bg-mute mb-6 mt-4 h-0.5 border-0" />
 
       {/* content */}
       <div className="relative">

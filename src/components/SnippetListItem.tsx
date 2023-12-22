@@ -9,9 +9,9 @@ interface Props extends Snippet {}
 
 export default function SnippetListItem({ title, slug, tags }: Props) {
   return (
-    <li className="bg-secondary list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
+    <li className="list-none overflow-hidden rounded-md transition-transform hover:-translate-y-1">
       <Link href={`/snippets/${slug}`} aria-label={`${title}`}>
-        <div className="bg-secondary flex grow justify-between self-stretch rounded-md p-4">
+        <div className="flex grow justify-between self-stretch rounded-md">
           <div className="flex gap-2">
             <CodeIcon width={'28px'} height={'28px'} />
             <H2 className="text-base">{title}</H2>

@@ -21,7 +21,7 @@ const config: Config = {
             code: {
               '&:not(pre>code)': {
                 color: '#737373',
-                backgroundColor: '#e5e5e5',
+                backgroundColor: '#ededed',
                 borderRadius: '0.375rem',
                 padding: '0.2rem 0.4rem',
                 '&::before': {
@@ -33,8 +33,8 @@ const config: Config = {
               },
             },
             blockquote: {
-              borderLeftColor: '#7DB5B4',
-              backgroundColor: '#ececec',
+              borderLeftColor: '#10B981',
+              backgroundColor: '#f5f5f5',
               p: {
                 fontStyle: 'normal',
                 '&::before': {
@@ -47,10 +47,10 @@ const config: Config = {
               },
             },
             a: {
-              color: '#57A2A8',
+              color: '#10B981',
               fontWeight: '600',
               '&:hover': {
-                color: '#43838E',
+                color: '#059669',
               },
             },
           },
@@ -77,16 +77,16 @@ const config: Config = {
         black: {
           50: '#fafafa',
           100: '#f5f5f5',
-          150: '#ededed',
+          150: '#eeeeee',
           200: '#e5e5e5',
           250: '#dedede',
           300: '#d4d4d4',
           350: '#b5b5b5',
           400: '#a3a3a3',
           450: '#8a8a8a',
-          470: '#808080',
           500: '#737373',
-          600: '#737373',
+          550: '#666666',
+          600: '#555555',
           700: '#404040',
           750: '#363636',
           800: '#2E2E2E',
@@ -125,35 +125,34 @@ const config: Config = {
           '@apply text-emerald-600 dark:text-emerald-500': '',
         },
         '.text-primary': {
-          '@apply text-mint-900 dark:text-black-100': '',
+          '@apply text-black-700 dark:text-black-100': '',
         },
         '.text-secondary': {
-          '@apply text-mint-800 dark:text-black-200': '',
+          '@apply text-black-600 dark:text-black-200': '',
         },
         '.text-tertiary': {
-          '@apply text-mint-700 dark:text-black-300': '',
+          '@apply text-black-550 dark:text-black-300': '',
         },
         '.text-mute': {
           '@apply text-black-500 dark:text-black-350': '',
         },
         '.bg-primary': {
-          '@apply bg-mint-50 dark:bg-black-850': '',
+          '@apply bg-white dark:bg-black-850': '',
         },
         '.bg-secondary': {
-          '@apply bg-mint-100 dark:bg-black-800': '',
+          '@apply bg-black-100 dark:bg-black-800': '',
         },
         '.bg-tertiary': {
-          '@apply bg-mint-200 dark:bg-black-750': '',
+          '@apply bg-black-200 dark:bg-black-750': '',
         },
         '.bg-mute': {
-          '@apply bg-mint-400 dark:bg-black-500': '',
+          '@apply bg-black-400 dark:bg-black-500': '',
         },
         '.tag-primary': {
-          '@apply bg-mint-150 text-mint-400 dark:text-black-350 dark:bg-black-700 hover:bg-mint-200 dark:hover:bg-black-850':
-            '',
+          '@apply bg-black-150 text-black-700 dark:text-black-300 dark:bg-black-700': '',
         },
         '.tag-active': {
-          '@apply cursor-default bg-mint-400 text-white dark:text-white dark:bg-black-500 hover:bg-mint-400 dark:hover:bg-black-500':
+          '@apply pointer-events-none cursor-default bg-[#05875e] text-white dark:text-white dark:bg-emerald-700':
             '',
         },
       });

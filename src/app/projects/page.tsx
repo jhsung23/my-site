@@ -27,7 +27,7 @@ export default async function Page() {
         지금까지 진행했던 프로젝트예요. 주로 FrontEnd 개발에 참여했어요.
       </Paragraph>
 
-      <ul className="mt-12 grid grid-cols-1 gap-3 md:grid-cols-2">
+      <ul className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectListItem key={project.pageId} {...project} />
         ))}

@@ -43,7 +43,12 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
       <H2 className="mt-12">Tags</H2>
       <ul className="mt-3 flex max-w-full flex-wrap gap-2">
         {tags.map((tag) => (
-          <Tag key={tag} className={`${selectedTag === tag ? 'tag-active' : ''}`}>
+          <Tag
+            key={tag}
+            className={`${
+              selectedTag === tag ? 'tag-active' : 'hover:opacity-60 dark:hover:opacity-60'
+            }`}
+          >
             <Link key={tag} href={`?tag=${tag}`} aria-label={`${tag} 관련 글 목록 더 보기`}>
               {tag}
             </Link>
@@ -58,7 +63,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { [key:
           {selectedTag} ({filteredPosts.length})
         </span>
       </H2>
-      <ul className="mt-3 flex flex-col gap-3">
+      <ul className="mt-3 flex flex-col gap-10">
         {filteredPosts.map((post) => (
           <PostListItem key={post.pageId} {...post} />
         ))}

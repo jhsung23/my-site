@@ -42,15 +42,15 @@ export default async function AboutPage() {
             입니다.
           </H2>
 
-          <Paragraph className="text-mute">
+          <Paragraph>
             🍀 누군가에게 <span className="text-highlight font-extrabold">선한 영향력</span>을
             전달할 수 있는 개발자를 꿈꾸고 있어요.
           </Paragraph>
-          <Paragraph className="text-mute">
+          <Paragraph>
             🌳 <span className="text-highlight font-extrabold">보탬</span>이 될 수 있는 요소를 찾아
             실천하고 개선하는 것을 좋아합니다.
           </Paragraph>
-          <Paragraph className="text-mute">
+          <Paragraph>
             📗 <span className="text-highlight font-extrabold">지식 공유의 즐거움</span>을 느끼며
             꾸준한 스터디 활동을 하고 있어요.
           </Paragraph>
@@ -59,7 +59,7 @@ export default async function AboutPage() {
             <a
               href="mailto:jhsung23@naver.com"
               target="_blank"
-              className="text-mute hover:text-highlight"
+              className="text-secondary hover:text-highlight"
               aria-label="Email 전송"
             >
               Email
@@ -67,12 +67,12 @@ export default async function AboutPage() {
             <a
               href="https://github.com/jhsung23"
               target="_blank"
-              className="text-mute hover:text-highlight"
+              className="text-secondary hover:text-highlight"
               aria-label="Github"
             >
               Github
             </a>
-            <Link href="blog" className="text-mute hover:text-highlight" aria-label="Blog">
+            <Link href="blog" className="text-secondary hover:text-highlight" aria-label="Blog">
               Blog
             </Link>
           </div>
@@ -90,7 +90,7 @@ export default async function AboutPage() {
           더 보기
         </Link>
       </H2>
-      <ul className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
+      <ul className="mt-3 grid grid-cols-2 gap-6 lg:grid-cols-4">
         {posts.slice(0, 4).map((post) => (
           <RecentPostListItem key={post.pageId} {...post} />
         ))}

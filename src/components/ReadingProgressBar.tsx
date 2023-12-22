@@ -28,7 +28,7 @@ export default function ReadingProgressBar() {
     <progress
       value={progress}
       max={100}
-      className="fixed inset-x-0 top-0 z-10 h-1.5 w-full progress-value:rounded-r progress-value:bg-mint-500 progress-bg:bg-black-350 dark:progress-bg:bg-black-700 "
+      className="fixed inset-x-0 top-0 z-10 h-1.5 w-full progress-value:rounded-r progress-value:bg-emerald-500 progress-bg:bg-black-350 dark:progress-bg:bg-black-700 "
     ></progress>
   );
 }
