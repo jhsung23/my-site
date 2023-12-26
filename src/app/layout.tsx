@@ -23,10 +23,10 @@ const Providers = dynamic(() => import('./Providers'), { ssr: false });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className="bg-primary flex flex-col items-center">
+      <body className="bg-primary flex min-h-screen flex-col items-center">
         <Providers>
           <Header />
-          <main className="w-11/12 max-w-3xl">
+          <main className="w-11/12 max-w-3xl grow">
             <Suspense fallback={<Loading />}>{children}</Suspense>
           </main>
           <Footer />
