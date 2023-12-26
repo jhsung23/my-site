@@ -1,4 +1,5 @@
 export { default as MenuToggleButton } from './MenuToggleButton';
+export { default as NotFound } from './NotFound';
 export { default as PostListItem } from './PostListItem';
 export { default as ProjectListItem } from './ProjectListItem';
 export { default as ReadingProgressBar } from './ReadingProgressBar';
