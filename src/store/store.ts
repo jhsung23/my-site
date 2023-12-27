@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import menuSlice from '@/lib/features/menu/menuSlice';
+import menuSlice from '@/store/features/menu/menuSlice';
 
 export const makeStore = () => {
   return configureStore({

@@ -2,8 +2,8 @@
 
 import { CloseIcon, MenuIcon } from '@/assets/icons';
 import { Button } from '@/components/common';
-import { setIsOpen } from '@/lib/features/menu/menuSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { setIsOpen } from '@/store/features/menu/menuSlice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { cn } from '@/utils/cn';
 
 interface Props {

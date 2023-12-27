@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 
 import { NavMenu } from '@/components/layouts';
-import { setIsOpen } from '@/lib/features/menu/menuSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { setIsOpen } from '@/store/features/menu/menuSlice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 export default function OverlayNavMenu() {
   const isMenuOpen = useAppSelector((state) => state.isOpen);
