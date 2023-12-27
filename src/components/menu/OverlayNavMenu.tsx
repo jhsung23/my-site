@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { NavMenu } from '@/components/layouts';
+import { NavMenu } from '@/components';
 import { setIsOpen } from '@/store/features/menu/menuSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 

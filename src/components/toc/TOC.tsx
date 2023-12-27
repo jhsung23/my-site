@@ -3,8 +3,9 @@
 import { parse } from 'node-html-parser';
 
 import { Paragraph } from '@/components/common';
-import { useToc } from '@/hooks';
 import { ParsedHtmlContent, findHeadingTag } from '@/utils/contents';
+
+import useToc from './useToc';
 
 interface Props {
   content: ParsedHtmlContent;

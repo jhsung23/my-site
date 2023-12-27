@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 
-import { ProjectListItem } from '@/components';
+import { MenuPageIcon } from '@/components';
 import { H1, Paragraph } from '@/components/common';
-import { MenuPageIcon } from '@/components/layouts';
 import { getAllProjects } from '@/services/projectService';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
+
+import { ProjectListItem } from './_components';
 
 export const revalidate = 600;
 

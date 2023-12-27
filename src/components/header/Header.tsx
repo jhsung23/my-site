@@ -1,5 +1,4 @@
-import { MenuToggleButton, ThemeToggleButton } from '@/components';
-import { Logo, NavMenu, OverlayNavMenu } from '@/components/layouts';
+import { Logo, MenuToggleButton, NavMenu, OverlayNavMenu, ThemeToggleButton } from '@/components';
 
 export default function Header() {
   return (

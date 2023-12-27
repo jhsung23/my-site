@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { DarkIcon, LightIcon } from '@/assets/icons';
 import { Button } from '@/components/common';
-import { useMode } from '@/hooks';
+
+import useMode from './useMode';
 
 export default function ThemeToggleButton() {
   const [mounted, setMounted] = useState(false);

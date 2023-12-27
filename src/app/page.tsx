@@ -2,11 +2,12 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { RecentPostListItem } from '@/components';
+import { MenuPageIcon } from '@/components';
 import { H1, H2, Paragraph } from '@/components/common';
-import { MenuPageIcon } from '@/components/layouts';
 import { getAllPosts } from '@/services/postService';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
+
+import { RecentPostListItem } from './_components';
 
 export const revalidate = 600;
 export const metadata: Metadata = {
