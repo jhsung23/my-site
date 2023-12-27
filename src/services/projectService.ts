@@ -1,29 +1,39 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import compact from 'lodash/compact';
 
-import { getAllPagesOfDatabase, getFilteredPageOfDatabaseWithRichText } from '@/apis/notionClient';
+import { handleHttpRequestError } from '@/lib/error';
+import { getAllPagesOfDatabase, getFilteredPageOfDatabaseWithRichText } from '@/lib/notion-client';
 import { Project } from '@/types/project';
 import { extractPropertyOfPage } from '@/utils/notion';
 
 export const getAllProjects = async () => {
-  const response = await getAllPagesOfDatabase(
-    `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
-    {
-      property: 'date',
-      direction: 'descending',
-    },
-  );
-  const compactResponse = compact(response);
-  return compactResponse.map(parseResponseToProject);
+  try {
+    const response = await getAllPagesOfDatabase(
+      `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
+      {
+        property: 'date',
+        direction: 'descending',
+      },
+    );
+    const compactResponse = compact(response);
+    return compactResponse.map(parseResponseToProject);
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
+  return [];
 };
 
 export const getProjectBySlug = async (slug: string) => {
-  const response = await getFilteredPageOfDatabaseWithRichText(
-    `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
-    { property: 'slug', targetString: slug },
-  );
-  const compactResponse = compact(response);
-  return compactResponse.map(parseResponseToProject)[0];
+  try {
+    const response = await getFilteredPageOfDatabaseWithRichText(
+      `${process.env.NEXT_PUBLIC_NOTION_PROJECT_DATABASE_ID}`,
+      { property: 'slug', targetString: slug },
+    );
+    const compactResponse = compact(response);
+    return compactResponse.map(parseResponseToProject)[0];
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
 };
 
 const parseResponseToProject = ({ id, properties }: PageObjectResponse) =>

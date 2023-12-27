@@ -7,7 +7,7 @@ import {
 } from '@notionhq/client/build/src/api-endpoints';
 
 export function assertPageObjectResponseArray(val: any): asserts val is PageObjectResponse[] {
-  if (val === null || val[0].properties === undefined) {
+  if (val === null || (val.length > 0 && val[0].properties === undefined)) {
     throw new AssertionError({
       message: `Expected 'val' to be PageObjectResponse[], but received ${val}`,
     });

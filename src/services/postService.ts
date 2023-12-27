@@ -1,45 +1,57 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import compact from 'lodash/compact';
 
+import { handleHttpRequestError } from '@/lib/error';
 import {
   getAllPagesOfDatabase,
   getDatabase,
   getFilteredPageOfDatabaseWithRichText,
-} from '@/apis/notionClient';
+} from '@/lib/notion-client';
 import { Post } from '@/types/post';
 import { extractPropertyOfPage } from '@/utils/notion';
 
 export const getAllPosts = async () => {
-  const response = await getAllPagesOfDatabase(
-    `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
-    {
-      property: 'date',
-      direction: 'descending',
-    },
-  );
-  const compactResponse = compact(response);
-  return compactResponse.map(parseResponseToPost);
+  try {
+    const response = await getAllPagesOfDatabase(
+      `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
+      {
+        property: 'date',
+        direction: 'descending',
+      },
+    );
+    const compactResponse = compact(response);
+    return compactResponse.map(parseResponseToPost);
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
+  return [];
 };
 
 export const getPostBySlug = async (slug: string) => {
-  const response = await getFilteredPageOfDatabaseWithRichText(
-    `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
-    { property: 'slug', targetString: slug },
-  );
-  const compactResponse = compact(response);
-  return compactResponse.map(parseResponseToPost)[0];
+  try {
+    const response = await getFilteredPageOfDatabaseWithRichText(
+      `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
+      { property: 'slug', targetString: slug },
+    );
+    const compactResponse = compact(response);
+    return compactResponse.map(parseResponseToPost)[0];
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
 };
 
 export const getAllTags = async (): Promise<Post['tags']> => {
-  // TODO refactor
-  return getDatabase(`${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`).then((response) => {
+  try {
+    const response = await getDatabase(`${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`);
     if (response.properties.tags.type === 'multi_select') {
       return response.properties.tags.multi_select
         ? response.properties.tags.multi_select.options.map((option) => option.name)
         : [];
     }
-    return [];
-  });
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
+  return [];
 };
 
 const parseResponseToPost = ({ id, properties }: PageObjectResponse) =>
