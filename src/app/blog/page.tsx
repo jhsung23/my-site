@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 
 import { MenuPageIcon } from '@/components';
 import { H1, Paragraph } from '@/components/common';
+import { ALL } from '@/constants/tag';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 import { Posts, Tags } from './_components';
 
-export const ALL = 'all';
 export const revalidate = 600;
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('blog'),

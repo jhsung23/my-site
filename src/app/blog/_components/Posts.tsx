@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 
 import { H2 } from '@/components/common';
+import { ALL } from '@/constants/tag';
 import { getAllPosts } from '@/services/postService';
 
 import { PostListItem } from '.';
-import { ALL } from '../page';
 
 interface Props {
   selectedTag: string;

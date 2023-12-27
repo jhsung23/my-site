@@ -3,9 +3,8 @@ import { Suspense } from 'react';
 
 import { Tag } from '@/components';
 import { H2 } from '@/components/common';
+import { ALL } from '@/constants/tag';
 import { getAllTags } from '@/services/postService';
-
-import { ALL } from '../page';
 
 interface Props {
   selectedTag: string;
