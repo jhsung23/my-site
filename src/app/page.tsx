@@ -2,14 +2,13 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getAllPosts } from '@/apis/postService';
 import { RecentPostListItem } from '@/components';
 import { H1, H2, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
+import { getAllPosts } from '@/services/postService';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 export const revalidate = 600;
-
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('about'),
   description: '안녕하세요. FrontEnd 개발자 성지현입니다.',
@@ -79,6 +78,7 @@ export default async function AboutPage() {
         </div>
       </div>
 
+      {/* TODO: 중첩 라우팅 처리? */}
       <H2 className="mt-20 flex items-baseline justify-between">
         Recent Posts
         <Link

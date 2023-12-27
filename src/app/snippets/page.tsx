@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
-import { getAllSnippets } from '@/apis/snippetService';
 import { SnippetListItem } from '@/components';
 import { H1, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
+import { getAllSnippets } from '@/services/snippetService';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 export const revalidate = 600;

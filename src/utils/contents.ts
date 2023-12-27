@@ -10,7 +10,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
-import { notionClientInstance } from '@/apis/notionClient';
+import { notionClientInstance } from '@/lib/notion-client';
 
 export type ParsedHtmlContent = Awaited<ReturnType<typeof parseNotionPageToHtml>>;
 

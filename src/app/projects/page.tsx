@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
-import { getAllProjects } from '@/apis/projectService';
 import { ProjectListItem } from '@/components';
 import { H1, Paragraph } from '@/components/common';
 import { MenuPageIcon } from '@/components/layouts';
+import { getAllProjects } from '@/services/projectService';
 import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 export const revalidate = 600;
