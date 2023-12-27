@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { getAllPosts, getPostBySlug } from '@/apis/postService';
 import { ReadingProgressBar, TOC, Tag } from '@/components';
 import { H1, Paragraph } from '@/components/common';
+import { getAllPosts, getPostBySlug } from '@/services/postService';
 import { Post } from '@/types/post';
 import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
@@ -19,6 +20,7 @@ export interface PostWithContent extends Post {
 
 const getPostDataBySlug = async (slug: string): Promise<PostWithContent> => {
   const post = await getPostBySlug(slug);
+  if (!post) notFound();
   const content = await parseNotionPageToHtml(post.pageId);
 
   return { ...post, content };
@@ -34,6 +36,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
+  if (!post) notFound();
 
   return {
     title: post.title,

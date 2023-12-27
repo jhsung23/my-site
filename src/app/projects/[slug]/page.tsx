@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-import { getAllProjects, getProjectBySlug } from '@/apis/projectService';
 import { CalendarIcon, PersonIcon, RepositoryIcon } from '@/assets/icons';
 import { ReadingProgressBar } from '@/components';
 import { H3 as Description, Paragraph, H1 as Title } from '@/components/common';
+import { getAllProjects, getProjectBySlug } from '@/services/projectService';
 import { Project } from '@/types/project';
 import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
@@ -18,9 +19,9 @@ export interface ProjectWithContent extends Project {
   content: ParsedHtmlContent;
 }
 
-// TODO 함수 추상화
 const getProjectDataBySlug = async (slug: string): Promise<ProjectWithContent> => {
   const project = await getProjectBySlug(slug);
+  if (!project) notFound();
   const content = await parseNotionPageToHtml(project.pageId);
 
   return { ...project, content };
@@ -36,6 +37,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
+  if (!project) notFound();
 
   return {
     title: project.projectTitle,
