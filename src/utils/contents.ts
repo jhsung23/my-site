@@ -1,4 +1,5 @@
 import { NotionToMarkdown } from 'notion-to-md';
+import { MdBlock } from 'notion-to-md/build/types';
 import rehypeAutoLinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSanitize from 'rehype-sanitize';
@@ -11,12 +12,18 @@ import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
 import { notionClientInstance } from '@/lib/notion-client';
+import { HEADING_REGEX } from '@/lib/regexp';
+
+import { detachQueryStringFromUrl, parseURIOfMarkdownHyperlink } from './string';
 
 export type ParsedHtmlContent = Awaited<ReturnType<typeof parseNotionPageToHtml>>;
 
 export const parseNotionPageToMarkdown = async (pageId: string) => {
   const n2m = new NotionToMarkdown({ notionClient: notionClientInstance });
-  const mdblocks = await n2m.pageToMarkdown(pageId);
+  const mdblocks = (await n2m.pageToMarkdown(pageId)).map((block) => {
+    if (block.type === 'image') return handleImageUrl(block);
+    return block;
+  });
   const mdString = n2m.toMarkdownString(mdblocks);
 
   return mdString.parent;
@@ -47,9 +54,17 @@ export const parseNotionPageToHtml = async (pageId: string) => {
   return htmlContent;
 };
 
-const HEADING_REGEX = /<h([1-6].*?)>(.*?)<\/h([1-6])>/g;
-
 export const findHeadingTag = (article: ParsedHtmlContent) => {
   const articleString = article.toString();
   return articleString.match(HEADING_REGEX) ?? [];
+};
+
+export const handleImageUrl = (block: MdBlock): MdBlock => {
+  const imageUrl = detachQueryStringFromUrl(parseURIOfMarkdownHyperlink(block.parent));
+  if (!imageUrl) return block;
+  const newImageUrl = `https://jhsung23.notion.site/image/${encodeURIComponent(
+    imageUrl,
+  )}?table=block&id=${block.blockId}&cache=v2`;
+  block.parent = `![code](${newImageUrl})`;
+  return block;
 };
