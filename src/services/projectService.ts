@@ -4,7 +4,9 @@ import compact from 'lodash/compact';
 import { handleHttpRequestError } from '@/lib/error';
 import { getAllPagesOfDatabase, getFilteredPageOfDatabaseWithRichText } from '@/lib/notion-client';
 import { Project } from '@/types/project';
+import { generateWebImageUrl } from '@/utils/contents';
 import { extractPropertyOfPage } from '@/utils/notion';
+import { detachQueryStringFromUrl } from '@/utils/string';
 
 export const getAllProjects = async () => {
   try {
@@ -39,7 +41,10 @@ export const getProjectBySlug = async (slug: string) => {
 const parseResponseToProject = ({ id, properties }: PageObjectResponse) =>
   ({
     pageId: id,
-    thumbnail: extractPropertyOfPage(properties.thumbnail),
+    thumbnail: generateWebImageUrl(
+      detachQueryStringFromUrl(extractPropertyOfPage(properties.thumbnail) as string),
+      id,
+    ),
     projectTitle: extractPropertyOfPage(properties.projectTitle),
     description: extractPropertyOfPage(properties.description),
     slug: extractPropertyOfPage(properties.slug),

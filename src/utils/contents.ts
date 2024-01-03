@@ -62,9 +62,13 @@ export const findHeadingTag = (article: ParsedHtmlContent) => {
 export const handleImageUrl = (block: MdBlock): MdBlock => {
   const imageUrl = detachQueryStringFromUrl(parseURIOfMarkdownHyperlink(block.parent));
   if (!imageUrl) return block;
-  const newImageUrl = `https://jhsung23.notion.site/image/${encodeURIComponent(
-    imageUrl,
-  )}?table=block&id=${block.blockId}&cache=v2`;
+  const newImageUrl = generateWebImageUrl(imageUrl, block.blockId);
   block.parent = `![code](${newImageUrl})`;
   return block;
+};
+
+export const generateWebImageUrl = (imageUrl: string, pageOrBlockId: string) => {
+  return `https://jhsung23.notion.site/image/${encodeURIComponent(
+    imageUrl,
+  )}?table=block&id=${pageOrBlockId}&cache=v2`;
 };
