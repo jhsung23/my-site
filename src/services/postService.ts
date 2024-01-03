@@ -1,6 +1,7 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import compact from 'lodash/compact';
 
+import { env } from '@/lib/env';
 import { handleHttpRequestError } from '@/lib/error';
 import {
   getAllPagesOfDatabase,
@@ -12,13 +13,10 @@ import { extractPropertyOfPage } from '@/utils/notion';
 
 export const getAllPosts = async () => {
   try {
-    const response = await getAllPagesOfDatabase(
-      `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
-      {
-        property: 'date',
-        direction: 'descending',
-      },
-    );
+    const response = await getAllPagesOfDatabase(env.NOTION_TIL_DATABASE_ID, {
+      property: 'date',
+      direction: 'descending',
+    });
     const compactResponse = compact(response);
     return compactResponse.map(parseResponseToPost);
   } catch (error: unknown) {
@@ -29,10 +27,10 @@ export const getAllPosts = async () => {
 
 export const getPostBySlug = async (slug: string) => {
   try {
-    const response = await getFilteredPageOfDatabaseWithRichText(
-      `${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`,
-      { property: 'slug', targetString: slug },
-    );
+    const response = await getFilteredPageOfDatabaseWithRichText(env.NOTION_TIL_DATABASE_ID, {
+      property: 'slug',
+      targetString: slug,
+    });
     const compactResponse = compact(response);
     return compactResponse.map(parseResponseToPost)[0];
   } catch (error: unknown) {
@@ -42,7 +40,7 @@ export const getPostBySlug = async (slug: string) => {
 
 export const getAllTags = async (): Promise<Post['tags']> => {
   try {
-    const response = await getDatabase(`${process.env.NEXT_PUBLIC_NOTION_TIL_DATABASE_ID}`);
+    const response = await getDatabase(env.NOTION_TIL_DATABASE_ID);
     if (response.properties.tags.type === 'multi_select') {
       return response.properties.tags.multi_select
         ? response.properties.tags.multi_select.options.map((option) => option.name)

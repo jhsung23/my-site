@@ -1,6 +1,7 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import compact from 'lodash/compact';
 
+import { env } from '@/lib/env';
 import { handleHttpRequestError } from '@/lib/error';
 import { getAllPagesOfDatabase, getFilteredPageOfDatabaseWithRichText } from '@/lib/notion-client';
 import { Snippet } from '@/types/snippet';
@@ -8,9 +9,7 @@ import { extractPropertyOfPage } from '@/utils/notion';
 
 export const getAllSnippets = async () => {
   try {
-    const response = await getAllPagesOfDatabase(
-      `${process.env.NEXT_PUBLIC_NOTION_SNIPPET_DATABASE_ID}`,
-    );
+    const response = await getAllPagesOfDatabase(env.NOTION_SNIPPET_DATABASE_ID);
     const compactResponse = compact(response);
     return compactResponse.map(parseResponseToSnippet);
   } catch (error: unknown) {
@@ -22,10 +21,10 @@ export const getAllSnippets = async () => {
 // TODO
 export const getSnippetBySlug = async (slug: string) => {
   try {
-    const response = await getFilteredPageOfDatabaseWithRichText(
-      `${process.env.NEXT_PUBLIC_NOTION_SNIPPET_DATABASE_ID}`,
-      { property: 'slug', targetString: slug },
-    );
+    const response = await getFilteredPageOfDatabaseWithRichText(env.NOTION_SNIPPET_DATABASE_ID, {
+      property: 'slug',
+      targetString: slug,
+    });
     const compactResponse = compact(response);
     return compactResponse.map(parseResponseToSnippet)[0];
   } catch (error: unknown) {

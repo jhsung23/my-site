@@ -2,8 +2,10 @@ import { Client } from '@notionhq/client';
 
 import { assertDatabaseObjectResponse, assertPageObjectResponseArray } from '@/utils/assert';
 
+import { env } from './env';
+
 const createNotionClientInstance = () => {
-  return new Client({ auth: process.env.NEXT_PUBLIC_NOTION_API_KEY, fetch: fetch });
+  return new Client({ auth: env.NOTION_API_KEY, fetch: fetch });
 };
 
 export const notionClientInstance = createNotionClientInstance();
