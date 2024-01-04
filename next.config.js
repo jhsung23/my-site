@@ -9,7 +9,10 @@ const nextConfig = {
     return config;
   },
   images: {
-    remotePatterns: [{ hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' }],
+    remotePatterns: [
+      { hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' },
+      { hostname: 'jhsung23.notion.site' },
+    ],
   },
 };
 

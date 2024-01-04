@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import { CalendarIcon, PersonIcon, RepositoryIcon } from '@/assets/icons';
@@ -68,8 +69,7 @@ export default async function Page({ params }: Props) {
 
       <div className="flex w-full flex-col">
         <section>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={thumbnail}
             width={400}
             height={400}
