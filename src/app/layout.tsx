@@ -23,6 +23,12 @@ const Providers = dynamic(() => import('@/components/providers/Providers'), { ss
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="8CR7AQG6gPJL3e_-d8L6XyQ59cIHLinOPl1UXlRs5o4"
+        />
+      </head>
       <body className="bg-primary flex min-h-screen flex-col items-center">
         <Providers>
           <Header />
