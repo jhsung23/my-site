@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+import { getAllPosts } from '@/services/postService';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: 'https://sungjihyun.vercel.app',
@@ -20,5 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    ...(await getAllPosts()).map((post) => ({
+      url: `https://sungjihyun.vercel.app/blog/${post.slug}`,
+      lastModified: post.date,
+      changeFrequency: 'monthly' as const,
+      priority: 1,
+    })),
   ];
 }
