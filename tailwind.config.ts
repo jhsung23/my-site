@@ -15,6 +15,15 @@ const config: Config = {
             'h1,h2,h3,h4,h5,h6': {
               'scroll-margin-top': '128px',
             },
+            p: {
+              margin: '0.75rem 0',
+            },
+            li: {
+              margin: '0.375rem 0',
+            },
+            'li>ol': {
+              margin: '0.375rem 0',
+            },
             img: {
               borderRadius: '0.375rem',
             },
