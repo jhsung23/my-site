@@ -33,6 +33,5 @@ npm run dev
 
 ## 관련 블로깅
 
-- [[MySite] 태그 필터링 속도 개선하기](https://sungjihyun.vercel.app/blog/notionsdk-fetch-api)
 - [[MySite] Notion API의 이미지 expire time으로 인한 이미지 깨짐 이슈 해결기](https://sungjihyun.vercel.app/blog/resolving-notion-url-expire-time-issue)
 - [[MySite] SSG를 적용하여 로딩 속도 개선하기](https://sungjihyun.vercel.app/blog/generatestaticparams-for-ssg)
