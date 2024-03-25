@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
@@ -5,7 +6,7 @@ import { Suspense } from 'react';
 import Loading from '@/app/loading';
 import { Footer, Header } from '@/components';
 import { SITE } from '@/constants/site';
-
+import { env } from '@/lib/env';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </Providers>
       </body>
+      <GoogleAnalytics gaId={env.GA_ID} />
     </html>
   );
 }
