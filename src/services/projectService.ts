@@ -1,5 +1,5 @@
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import compact from 'lodash/compact';
+import compact from 'lodash.compact';
 
 import { env } from '@/lib/env';
 import { handleHttpRequestError } from '@/lib/error';
