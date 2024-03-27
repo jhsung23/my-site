@@ -8,6 +8,8 @@ export const extractPropertyOfPage = (propertyObject: PagePropertyObject) => {
   switch (propertyObject.type) {
     case 'title':
       return extractTitleProperty(propertyObject);
+    case 'select':
+      return extractSelectProperty(propertyObject);
     case 'multi_select':
       return extractMultiSelectProperty(propertyObject);
     case 'rich_text':
@@ -29,6 +31,15 @@ export const extractPropertyOfPage = (propertyObject: PagePropertyObject) => {
 export const extractTitleProperty = (titlePropertyObject: PagePropertyObject): string => {
   if (titlePropertyObject.type === 'title') {
     return titlePropertyObject.title[0].plain_text;
+  }
+  return '';
+};
+
+export const extractSelectProperty = (selectPropertyObject: PagePropertyObject): string => {
+  if (selectPropertyObject.type === 'select') {
+    if (selectPropertyObject.select) {
+      return selectPropertyObject.select.name;
+    }
   }
   return '';
 };

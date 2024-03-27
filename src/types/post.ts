@@ -5,4 +5,6 @@ export interface Post {
   slug: string;
   tags: string[];
   date: string;
+  category: 'Knowledge' | 'TroubleShooting' | 'Development' | 'FAS';
+  icon: string;
 }

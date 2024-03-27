@@ -50,6 +50,28 @@ export const getFilteredPageOfDatabaseWithRichText = async (
   return results;
 };
 
+export const getFilteredPageOfDatabaseWithSelect = async (
+  database_id: string,
+  filterOption: {
+    property: string;
+    targetString: string;
+  },
+) => {
+  const { property, targetString } = filterOption;
+  const response = await notionClientInstance.databases.query({
+    database_id,
+    filter: {
+      select: {
+        equals: targetString,
+      },
+      property,
+    },
+  });
+  const results = response.results;
+  assertPageObjectResponseArray(results);
+  return results;
+};
+
 export const getDatabase = async (database_id: string) => {
   const response = await notionClientInstance.databases.retrieve({
     database_id,

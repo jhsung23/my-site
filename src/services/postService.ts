@@ -7,6 +7,7 @@ import {
   getAllPagesOfDatabase,
   getDatabase,
   getFilteredPageOfDatabaseWithRichText,
+  getFilteredPageOfDatabaseWithSelect,
 } from '@/lib/notion-client';
 import { Post } from '@/types/post';
 import { extractPropertyOfPage } from '@/utils/notion';
@@ -38,6 +39,19 @@ export const getPostBySlug = async (slug: string) => {
   }
 };
 
+export const getPostByCategory = async (category: string) => {
+  try {
+    const response = await getFilteredPageOfDatabaseWithSelect(env.NOTION_TIL_DATABASE_ID, {
+      property: 'category',
+      targetString: category,
+    });
+    const compactResponse = compact(response);
+    return compactResponse.map(parseResponseToPost);
+  } catch (error: unknown) {
+    handleHttpRequestError(error);
+  }
+};
+
 export const getAllTags = async (): Promise<Post['tags']> => {
   try {
     const response = await getDatabase(env.NOTION_TIL_DATABASE_ID);
@@ -52,7 +66,7 @@ export const getAllTags = async (): Promise<Post['tags']> => {
   return [];
 };
 
-const parseResponseToPost = ({ id, properties }: PageObjectResponse) =>
+const parseResponseToPost = ({ id, icon, properties }: PageObjectResponse) =>
   ({
     pageId: id,
     title: extractPropertyOfPage(properties.title),
@@ -61,4 +75,6 @@ const parseResponseToPost = ({ id, properties }: PageObjectResponse) =>
     tags: extractPropertyOfPage(properties.tags),
     date: (extractPropertyOfPage(properties.date) as { startDate: string; endDate: string })
       .startDate,
+    category: extractPropertyOfPage(properties.category),
+    icon: icon?.type === 'emoji' ? icon.emoji : '📝',
   }) as Post;
