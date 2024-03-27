@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { Tag } from '@/components';
 import { H2, Paragraph } from '@/components/common';
+import { notionBgColors } from '@/constants/notion';
 import { Project } from '@/types/project';
 
 interface Props extends Project {}
@@ -31,9 +32,9 @@ export default function ProjectListItem({
           </Paragraph>
           {tags.length > 0 && (
             <ul className="mt-2 flex flex-wrap gap-1.5">
-              {tags.map((tag) => (
-                <Tag key={tag} aria-hidden="true">
-                  {tag}
+              {tags.map(({ label, color }) => (
+                <Tag key={label} aria-hidden="true" className={notionBgColors[color]}>
+                  {label}
                 </Tag>
               ))}
             </ul>

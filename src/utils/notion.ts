@@ -46,9 +46,12 @@ export const extractSelectProperty = (selectPropertyObject: PagePropertyObject):
 
 export const extractMultiSelectProperty = (
   multiSelectPropertyObject: PagePropertyObject,
-): string[] => {
+): { label: string; color: string }[] => {
   if (multiSelectPropertyObject.type === 'multi_select') {
-    return multiSelectPropertyObject.multi_select.map((el) => el.name);
+    return multiSelectPropertyObject.multi_select.map((el) => ({
+      label: el.name,
+      color: el.color,
+    }));
   }
   return [];
 };

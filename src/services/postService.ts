@@ -57,7 +57,10 @@ export const getAllTags = async (): Promise<Post['tags']> => {
     const response = await getDatabase(env.NOTION_TIL_DATABASE_ID);
     if (response.properties.tags.type === 'multi_select') {
       return response.properties.tags.multi_select
-        ? response.properties.tags.multi_select.options.map((option) => option.name)
+        ? response.properties.tags.multi_select.options.map((option) => ({
+            label: option.name,
+            color: option.color,
+          }))
         : [];
     }
   } catch (error: unknown) {

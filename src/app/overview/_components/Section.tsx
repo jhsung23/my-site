@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Tag } from '@/components';
 import { H3, Paragraph } from '@/components/common';
+import { notionBgColors } from '@/constants/notion';
 import { getPostByCategory } from '@/services/postService';
 import { Post } from '@/types/post';
 
@@ -29,7 +30,9 @@ export default async function Section({ title, description }: Props) {
               <h4 className="truncate text-black-550 hover:text-black-900 dark:text-black-350 dark:hover:text-black-50">
                 {title}
               </h4>
-              <Tag className="whitespace-nowrap text-xs">{tags[0]}</Tag>
+              <Tag className={`whitespace-nowrap text-xs ${notionBgColors[tags[0].color]}`}>
+                {tags[0].label}
+              </Tag>
             </Link>
           </li>
         ))}
@@ -37,8 +40,3 @@ export default async function Section({ title, description }: Props) {
     </section>
   );
 }
-
-/**
- * Trouble
- * insight
- */

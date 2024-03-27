@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.subtitle,
       images: [{ url: '/logo.png', width: 600, height: 600, alt: `logo` }],
-      tags: post.tags,
+      tags: post.tags.map((tag) => tag.label),
       type: 'article',
     },
   };
@@ -61,8 +61,8 @@ export default async function Page({ params }: Props) {
     <>
       <ReadingProgressBar />
       <ul className="mb-3 mt-4 flex max-w-full flex-wrap gap-2">
-        {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+        {tags.map(({ label }) => (
+          <Tag key={label}>{label}</Tag>
         ))}
       </ul>
       <H1 className="text-highlight break-words font-bold">{title}</H1>

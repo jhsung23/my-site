@@ -11,21 +11,21 @@ interface Props {
 }
 
 export default async function Tags({ selectedTag }: Props) {
-  const tags = [ALL, ...(await getAllTags())];
+  const tags = [{ label: ALL, color: 'gray' }, ...(await getAllTags())];
 
   return (
     <Suspense>
       <H2 className="mt-12">Tags</H2>
       <ul className="mt-3 flex max-w-full flex-wrap gap-2">
-        {tags.map((tag) => (
+        {tags.map(({ label }) => (
           <Tag
-            key={tag}
+            key={label}
             className={`${
-              selectedTag === tag ? 'tag-active' : 'hover:opacity-60 dark:hover:opacity-60'
+              selectedTag === label ? 'tag-active' : 'hover:opacity-60 dark:hover:opacity-60'
             }`}
           >
-            <Link key={tag} href={`?tag=${tag}`} aria-label={`${tag} 관련 글 목록 더 보기`}>
-              {tag}
+            <Link key={label} href={`?tag=${label}`} aria-label={`${label} 관련 글 목록 더 보기`}>
+              {label}
             </Link>
           </Tag>
         ))}

@@ -19,8 +19,8 @@ export default function PostListItem({ title, subtitle, slug, tags }: Props) {
           )}
           {tags.length > 0 && (
             <ul className="mt-2 flex flex-wrap gap-1.5" aria-hidden="true">
-              {tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
+              {tags.map(({ label }) => (
+                <Tag key={label}>{label}</Tag>
               ))}
             </ul>
           )}
