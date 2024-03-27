@@ -3,7 +3,7 @@ import { Logo, MenuToggleButton, NavMenu, OverlayNavMenu, ThemeToggleButton } fr
 export default function Header() {
   return (
     // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-    <header className="bg-primary sticky top-0 z-10 flex w-11/12 max-w-3xl items-center bg-opacity-95 py-8 dark:bg-opacity-95 md:-top-8 md:pb-8 md:pt-16">
+    <header className="bg-primary sticky top-0 z-10 flex w-11/12 max-w-4xl items-center bg-opacity-95 py-8 dark:bg-opacity-95 md:-top-8 md:pb-8 md:pt-16">
       <nav className="flex grow justify-between">
         <Logo />
         <NavMenu className="hidden select-none list-none items-center gap-4 md:flex" />
