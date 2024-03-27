@@ -13,7 +13,9 @@ interface Props {
 export default async function Posts({ selectedTag }: Props) {
   const posts = await getAllPosts();
   const filteredPosts =
-    selectedTag === ALL ? posts : posts.filter((post) => post.tags.includes(selectedTag));
+    selectedTag === ALL
+      ? posts
+      : posts.filter((post) => post.tags.some((tag) => tag.label === selectedTag));
 
   return (
     <Suspense>

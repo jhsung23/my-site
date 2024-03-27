@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       images: [{ url: '/logo.png', width: 600, height: 600, alt: `logo` }],
-      tags: project.tags,
+      tags: project.tags.map((tag) => tag.label),
       type: 'article',
     },
   };
