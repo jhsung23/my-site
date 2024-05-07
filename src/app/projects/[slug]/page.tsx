@@ -10,8 +10,6 @@ import { Project } from '@/types/project';
 import { ParsedHtmlContent, parseNotionPageToHtml } from '@/utils/contents';
 import { getPageCanonical } from '@/utils/seo';
 
-export const revalidate = 600;
-
 interface Props {
   params: { slug: string };
 }
