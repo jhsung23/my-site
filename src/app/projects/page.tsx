@@ -7,8 +7,7 @@ import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 import { ProjectListItem } from './_components';
 
-export const revalidate = 600;
-
+export const revalidate = 604800; // 60 * 60 * 24 * 7
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('projects'),
   description: '지금까지 진행했던 프로젝트예요. 주로 FrontEnd 개발에 참여했어요.',
