@@ -7,6 +7,7 @@ import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 import { Posts, Tags } from './_components';
 
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('blog'),
   description: 'FrontEnd 개발을 공부하면서 학습한 내용과 경험들을 기록했어요.',

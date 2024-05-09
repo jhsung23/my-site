@@ -9,6 +9,7 @@ import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 import { RecentPostListItem } from './_components';
 
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('about'),
   description: '안녕하세요. FrontEnd 개발자 성지현입니다.',

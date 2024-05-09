@@ -6,7 +6,7 @@ import { getMenuPageMetaTitle, getPageCanonical } from '@/utils/seo';
 
 import { Section } from './_components';
 
-export const revalidate = 604800; // 60 * 60 * 24 * 7
+export const revalidate = 0;
 export const metadata: Metadata = {
   title: getMenuPageMetaTitle('overview'),
   description: '블로그 overview',
