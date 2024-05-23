@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { ReadingProgressBar, TOC, Tag } from '@/components';
+import { Comment, ReadingProgressBar, TOC, Tag } from '@/components';
 import { H1, Paragraph } from '@/components/common';
 import { getAllPosts, getPostBySlug } from '@/services/postService';
 import { Post } from '@/types/post';
@@ -81,6 +81,10 @@ export default async function Page({ params }: Props) {
           <TOC content={content} />
         </aside>
       </div>
+
+      <hr className="bg-mute my-28 h-0.5 border-0" />
+
+      <Comment />
     </>
   );
 }
