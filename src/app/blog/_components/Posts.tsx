@@ -21,9 +21,9 @@ export default async function Posts({ selectedTag }: Props) {
     <Suspense>
       <H2 className="mt-12 flex items-baseline justify-between">
         Posts
-        <span className="text-lg font-semibold">
+        {/* <span className="text-lg font-semibold">
           {selectedTag} ({filteredPosts.length})
-        </span>
+        </span> */}
       </H2>
       <ul className="relative mt-3 flex flex-col gap-10">
         {filteredPosts.map((post) => (
